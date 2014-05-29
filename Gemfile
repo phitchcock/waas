@@ -8,9 +8,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'bootstrap-sass'
 
 # Added Gems
+gem 'bootstrap-sass'
+gem 'devise'
 
 group :development do 
   gem 'spring'
