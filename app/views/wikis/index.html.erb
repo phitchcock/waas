@@ -1,0 +1,10 @@
+<h1>Wikis</h1>
+<hr>
+
+<div class="row">
+  <% @wikis.each do |wiki| %>
+  <div class="well">
+    <h3><%= link_to wiki.title, wiki %></h3>
+  </div>
+  <% end %>
+</div>
