@@ -8,28 +8,11 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-default navbar-static-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">WAAS</a>
-        <ul class="nav navbar-nav">
-          <li><%= link_to 'wikis', wikis_path %></li>
-          <% if user_signed_in? %>
-            <li><%#= link_to 'user', user_path(@user) %></li>
-            <li><%= link_to 'new', new_wiki_path %></li>
-            <li><%= link_to 'logout', destroy_user_session_path(@user), method: :delete %></li>
-          <% else %>
-            <li><%= link_to 'sign in', new_user_session_path %></li>
-            <li><%= link_to 'register', new_user_registration_path %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
-  <%= render 'shared/flash' %>
-
   <div class="container">
+
+  <%= render 'shared/nav' %>
+
+  <%= render 'shared/flash' %>
       
     <%= yield %>
 
