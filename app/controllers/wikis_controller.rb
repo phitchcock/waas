@@ -1,5 +1,6 @@
 class WikisController < ApplicationController
 
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -14,7 +15,9 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.new(wiki_params)
+    @wiki = current_user.wikis.build(wiki_params)
+    
+
     if @wiki.save
       redirect_to @wiki, notice: "#{@wiki.title} has been created!"
     else

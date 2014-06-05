@@ -1,0 +1,7 @@
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% elsif flash[:alert] %>
+  <%= flash[:alert] %>
+<% elsif flash[:error] %>
+  <%= flash[:error] %>
+<% end %>

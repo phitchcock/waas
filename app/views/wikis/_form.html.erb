@@ -1,4 +1,5 @@
 <%= form_for(@wiki) do |f| %>
+  <%= render 'shared/errors', obj: @wiki %>
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: 'form-control' %>
