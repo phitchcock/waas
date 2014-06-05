@@ -14,9 +14,9 @@
         <a class="navbar-brand" href="#">WAAS</a>
         <ul class="nav navbar-nav">
           <li><%= link_to 'wikis', wikis_path %></li>
-          <li><%= link_to 'new', new_wiki_path %></li>
-          <% if @user == current_user || signed_in? %>
+          <% if user_signed_in? %>
             <li><%#= link_to 'user', user_path(@user) %></li>
+            <li><%= link_to 'new', new_wiki_path %></li>
             <li><%= link_to 'logout', destroy_user_session_path(@user), method: :delete %></li>
           <% else %>
             <li><%= link_to 'sign in', new_user_session_path %></li>
