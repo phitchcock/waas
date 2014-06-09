@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'redcarpet'
+gem 'pundit'
 
 group :development do 
   gem 'spring'

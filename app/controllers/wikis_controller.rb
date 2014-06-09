@@ -5,6 +5,7 @@ class WikisController < ApplicationController
 
   def index
     @wikis = Wiki.all 
+    authorize @wikis
   end
 
   def show
@@ -12,12 +13,13 @@ class WikisController < ApplicationController
 
   def new
     @wiki = Wiki.new
+    authorize @wiki
   end
 
   def create
     @wiki = current_user.wikis.build(wiki_params)
     
-
+    authorize @wiki
     if @wiki.save
       redirect_to @wiki, notice: "#{@wiki.title} has been created!"
     else
@@ -27,9 +29,11 @@ class WikisController < ApplicationController
   end
 
   def edit
+    authorize @wiki
   end
 
   def update
+    authorize @wiki
     if @wiki.update(wiki_params)
       redirect_to @wiki, notice: "#{@wiki.title} was updated!"
     else
