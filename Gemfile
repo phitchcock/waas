@@ -16,6 +16,7 @@ gem 'redcarpet'
 gem 'pundit'
 gem 'stripe'
 gem 'figaro'
+gem 'epic-editor-rails'
 
 group :development do 
   gem 'spring'

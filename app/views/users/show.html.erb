@@ -1,1 +1,12 @@
-<h1>User Show</h1>
+<h1>User Show <%= current_user.email %></h1>
+
+<h3>Public Wikis</h3>
+<hr>
+<% @user.wikis.each do |wiki| %>
+  <p><%= link_to wiki.title, wiki %></p>
+<% end %>
+
+<h3>Private Wikis</h3>
+<hr>
+
+<%= link_to 'New Wiki', new_wiki_path, class: 'btn btn-success' %>

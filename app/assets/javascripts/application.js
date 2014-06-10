@@ -13,5 +13,20 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require epiceditor
 //= require turbolinks
 //= require_tree .
+var opts = {
+  textarea: 'wiki_information',
+  string: {
+    togglePreview: 'Toggle Preview Mode',
+    toggleEdit: 'Toggle Edit Mode',
+    toggleFullscreen: 'Enter Fullscreen'
+  },
+  button: {
+    preview: true,
+    fullscreen: true,
+    bar: "auto"
+  }
+}
+//var editor = new EpicEditor(opts).load();
