@@ -1,3 +1,4 @@
+source 'https://code.stripe.com'
 source 'https://rubygems.org'
 
 gem 'rails', '4.1.0'
@@ -13,6 +14,8 @@ gem 'bootstrap-sass'
 gem 'devise'
 gem 'redcarpet'
 gem 'pundit'
+gem 'stripe'
+gem 'figaro'
 
 group :development do 
   gem 'spring'
