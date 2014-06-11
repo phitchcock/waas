@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
   root "pages#index"
+
+  devise_for :users
+
+  resources :charges, only: [:new, :create]
   resources :users
-  resources :wikis
-  resources :charges
+  
+  resources :wikis do
+    resources :collaborators
+  end
+  
 end

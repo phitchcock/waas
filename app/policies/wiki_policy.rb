@@ -4,4 +4,8 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
+  def edit
+    
+  end
+
 end

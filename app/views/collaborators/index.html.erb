@@ -1,0 +1,17 @@
+<h3>Collaborators</h3>
+<hr>
+<% @collaborators.each do |col| %>
+  <p><%= col.user.email %></p>
+<% end %>
+<p><%#= link_to 'make collaborator', wiki_collaborators_path(@wiki, user_id: user.id), method: :post %></p>
+
+<h3>Users</h3>
+<hr>
+<% @users.each do |user| %>
+  <p><%= user.email %> | <%= link_to 'make collaborator', wiki_collaborators_path(@wiki, user_id: user.id), method: :post %> </p>
+  <ul>
+    <% user.wikis.each do |wiki| %>
+      <li><%= wiki.title %></li>
+    <% end %>
+  </ul>
+<% end %>
