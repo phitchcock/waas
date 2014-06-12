@@ -8,10 +8,18 @@ class User < ActiveRecord::Base
   has_many :collaborators
   has_many :wikis, through: :collaborators
 
-  def role?(base_role)
-    role == base_role.to_s
-  end
+  # def role?(base_role)
+  #   role == base_role.to_s
+  # end
   
+  enum role: [:guest, :premium, :admin]
+
+  after_initialize :set_default_role, :if => :new_record?
+
+  def set_default_role
+    self.role ||= :guest
+  end
+
 end
 
 

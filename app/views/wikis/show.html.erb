@@ -1,7 +1,8 @@
 <h1><%= @wiki.title %></h1>
 <p><%= markdown @wiki.information %></p>
 
-<% if policy(@wiki).edit? %>
+<%# if policy(@wiki).edit? %>
   <%= link_to 'edit', edit_wiki_path(@wiki) %> or 
-  <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %>
-<% end %>
+  <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %> or
+  <%= link_to 'add collaborator', wiki_collaborators_path(@wiki) %>
+<%# end %>

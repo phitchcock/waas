@@ -5,7 +5,6 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def edit
-    
   end
 
 end

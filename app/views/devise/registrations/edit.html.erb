@@ -26,4 +26,9 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
+<h3>Upgrade Account</h3>
+<% if current_user role
+<%= link_to 'paid', new_charge_path, class: 'btn btn-success' %></br>
+
 <%= link_to "Back", :back %>
+

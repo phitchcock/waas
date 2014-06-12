@@ -19,11 +19,11 @@ class ChargesController < ApplicationController
       :currency    => 'usd'
     )
 
-    current_user.update_attributes(role: 'premium')
+    current_user.update_attributes(role: :premium)
 
-  rescue Stripe::CardError => e
-    flash[:error] = e.message
-    redirect_to charges_path
+    rescue Stripe::CardError => e
+      flash[:error] = e.message
+      redirect_to charges_path
   end
 
 
