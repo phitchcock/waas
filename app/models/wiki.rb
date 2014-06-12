@@ -5,4 +5,5 @@ class Wiki < ActiveRecord::Base
   has_many :users, through: :collaborators
   
   validates :title, presence: true
+
 end

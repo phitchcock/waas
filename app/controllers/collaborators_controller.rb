@@ -4,18 +4,20 @@ class CollaboratorsController < ApplicationController
     @wiki = Wiki.find(params[:wiki_id])
     @collaborators = @wiki.collaborators
     @users = User.all
+    authorize @collaborators
   end
   
   def new
     @collaborator = Collaborator.new
+    authorize @collaborator
   end
 
   def create
     @wiki = Wiki.find(params[:wiki_id])
     @user = User.find(params[:user_id])
-    #current_user can do this
-
     @collaborator = Collaborator.new(wiki: @wiki, user: @user)
+    authorize @collaborator
+
     if @collaborator.save
       redirect_to wiki_collaborators_path, notice: "Collaborator added!"
     else
@@ -23,8 +25,5 @@ class CollaboratorsController < ApplicationController
       render :new
     end
   end
-
-  # GET /wikis/123/edit
-  #   current_user can do this
 
 end

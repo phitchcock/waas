@@ -1,10 +1,15 @@
 class WikiPolicy < ApplicationPolicy
 
+  # class Scope < Struct.new(:user, :scope)
+  #   def resolve
+  #     scope.where('role > 0')
+  #   end
+  # end
+
   def index?
     true
   end
 
-  def edit
-  end
+
 
 end

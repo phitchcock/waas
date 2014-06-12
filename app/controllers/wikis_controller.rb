@@ -4,11 +4,12 @@ class WikisController < ApplicationController
   before_action :set_wiki, only: [:show, :edit, :update, :destroy]
 
   def index
-    @wikis = Wiki.all 
+    @wikis = Wiki.all
     authorize @wikis
   end
 
   def show
+    authorize @wiki
   end
 
   def new
