@@ -1,5 +1,5 @@
 class ChangeColumnUsersRoleToDefaultFalse < ActiveRecord::Migration
   def change
-    change_column :users, :role, :integer, default: false
+    add_column :users, :role, :integer
   end
 end
