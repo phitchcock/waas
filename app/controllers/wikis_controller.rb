@@ -60,6 +60,6 @@ class WikisController < ApplicationController
   end
 
   def set_wiki
-    @wiki = Wiki.find(params[:id])
+    @wiki = Wiki.friendly.find(params[:id])
   end
 end

@@ -1,7 +1,7 @@
 class CollaboratorsController < ApplicationController
 
   def index
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @collaborators = @wiki.collaborators
     @users = User.all
     authorize @collaborators
@@ -13,7 +13,7 @@ class CollaboratorsController < ApplicationController
   end
 
   def create
-    @wiki = Wiki.find(params[:wiki_id])
+    @wiki = Wiki.friendly.find(params[:wiki_id])
     @user = User.find(params[:user_id])
     @collaborator = Collaborator.new(wiki: @wiki, user: @user)
     authorize @collaborator

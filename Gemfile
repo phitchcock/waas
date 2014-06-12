@@ -17,6 +17,7 @@ gem 'pundit'
 gem 'stripe'
 gem 'figaro'
 gem 'epic-editor-rails'
+gem 'friendly_id'
 
 group :development do 
   gem 'spring'
