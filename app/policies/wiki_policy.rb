@@ -10,6 +10,13 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
+  def create_private?
+    user.premium? || user.admin?
+  end
+
+  def create?
+    super && (record.pubilc || create_private?)
+  end
 
 
 end

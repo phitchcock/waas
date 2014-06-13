@@ -20,6 +20,8 @@ class User < ActiveRecord::Base
     self.role ||= :guest
   end
 
+ scope :not_collaborator_on, ->(wiki){ joins("LEFT JOIN collaborators ON users.id = collaborators.user_id AND collaborators.wiki_id = #{wiki.id}").where(collaborators: {user_id: nil}) }
+
 end
 
 

@@ -8,11 +8,13 @@
     <%= f.label :information %>
     <%= f.text_area :information, class: 'form-control', size: '10x15' %>
   </div>
-  <div class="checkbox">
-    <%= f.label :pubilc, class: 'checkbox' do %>
-      <%= f.check_box :pubilc %> Public Wiki
-    <% end %>
-  </div>
+  <% if policy(Wiki).create_private? %>
+    <div class="checkbox">
+      <%= f.label :pubilc, class: 'checkbox' do %>
+        <%= f.check_box :pubilc %> Public Wiki
+      <% end %>
+    </div>
+  <% end %>
   <div class="form-group">
     <%= f.submit class: 'btn btn-success' %>
   </div>

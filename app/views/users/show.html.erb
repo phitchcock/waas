@@ -2,20 +2,16 @@
 
 <h3>Private Wikis</h3>
 <hr>
-<% @user.wikis.each do |wiki| %>
-    <% if wiki.pubilc == false %>
-      <p><%= link_to wiki.title, wiki %> | public: <%= wiki.pubilc %></p>
-  <% end %>
+<% @user.wikis.private_wikis.each do |wiki| %>
+  <p><%= link_to wiki.title, wiki %> | public: <%= wiki.pubilc %></p>
 <% end %>
 
 
 
 <h3>Public Wikis</h3>
 <hr>
-    <% @user.wikis.each do |wiki| %>
-    <% if wiki.pubilc == true %>
+    <% @user.wikis.public_wikis.each do |wiki| %>
       <p><%= link_to wiki.title, wiki %> | public: <%= wiki.pubilc %></p>
-  <% end %>
-<% end %>
+    <% end %>
 
 <%= link_to 'New Wiki', new_wiki_path, class: 'btn btn-success' %>
