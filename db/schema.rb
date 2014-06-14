@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140614181405) do
+ActiveRecord::Schema.define(version: 20140614190457) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20140614181405) do
     t.integer  "wiki_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
+
+  add_index "articles", ["slug"], name: "index_articles_on_slug"
 
   create_table "collaborators", force: true do |t|
     t.integer  "user_id"
