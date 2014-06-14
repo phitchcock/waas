@@ -6,3 +6,11 @@
   <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %> or
   <%= link_to 'add collaborator', wiki_collaborators_path(@wiki) %>
 <%# end %>
+
+<h3>Articles</h3>
+<% @wiki.articles.each do |article| %>
+  <p><%= link_to article.title, [@wiki, article] %></p>
+<% end %>
+
+<h3>Add Article</h3>
+<%= link_to 'new article', new_wiki_article_path(@wiki), class: 'btn btn-success' %>

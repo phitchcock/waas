@@ -9,6 +9,7 @@ class WikisController < ApplicationController
   end
 
   def show
+    @article = Article.new
     authorize @wiki
   end
 

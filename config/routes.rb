@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   
   resources :wikis do
+    resources :articles
     resources :collaborators
   end
   
