@@ -1,0 +1,7 @@
+<%= form_for [wiki, article, comment], remote: true do |f| %>
+  <div class="form-group">
+    <%= f.label :info %>
+    <%= f.text_area :info, class: 'form-control' %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>

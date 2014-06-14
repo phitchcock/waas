@@ -1,1 +1,20 @@
 <h1><%= @article.title %> <small><%= link_to 'edit', edit_wiki_article_path(@wiki, @article) %> | from wiki <%= @wiki.title %></small></h1>
+
+
+<h3>Comments</h3>
+<hr>
+<% @article.comments.each do |comment| %>
+  <p><%= comment.info %></p>
+<% end %>
+
+
+<h3>Add Comment</h3>
+<hr>
+
+<%= form_for([@wiki, @article, @comment]) do |f| %>
+  <div class="form-group">
+    <%= f.label :info %>
+    <%= f.text_area :info, class: 'form-control' %>
+  </div>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
