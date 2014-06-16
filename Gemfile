@@ -18,6 +18,9 @@ gem 'stripe'
 gem 'figaro'
 gem 'epic-editor-rails'
 gem 'friendly_id'
+gem 'font-awesome-sass'
+gem 'google-webfonts'
+gem 'rails-bootstrap-helpers'
 
 group :development do 
   gem 'spring'

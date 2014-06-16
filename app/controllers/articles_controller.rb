@@ -19,7 +19,7 @@ class ArticlesController < ApplicationController
     @article = @wiki.articles.build(article_params)
 
     if @article.save
-      redirect_to wiki_articles_path, notice: 'Created article'
+      redirect_to wiki_path(@wiki), notice: 'Created article'
     else
       flash[:error] = 'Article was not created'
       render :new

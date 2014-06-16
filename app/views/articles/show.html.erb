@@ -4,7 +4,19 @@
 <h3>Comments</h3>
 <hr>
 <% @article.comments.each do |comment| %>
-  <p><%= comment.info %></p>
+<div class="testimonial">
+  <p class="testimonial-text">
+    <%= comment.info %>
+  </p>
+  <div class="testimonials-arrow"></div>
+  <div class="testimonial-author">
+    <div class="testimonial-image"><%= image_tag "blur-sm.jpg" %>
+    <div class="testimonial-author-info">
+      <h5><%= comment.user.email %></h5>
+    </div>
+  </div>
+</div> <!-- /.testimonial -->
+</div>
 <% end %>
 
 

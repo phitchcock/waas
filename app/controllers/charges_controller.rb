@@ -1,6 +1,7 @@
 class ChargesController < ApplicationController
 
   def new
+    render layout: 'pages'
   end
 
   def create
@@ -24,6 +25,8 @@ class ChargesController < ApplicationController
     rescue Stripe::CardError => e
       flash[:error] = e.message
       redirect_to charges_path
+
+    render layout: 'pages'
   end
 
 

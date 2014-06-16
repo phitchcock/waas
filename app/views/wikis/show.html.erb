@@ -1,16 +1,62 @@
-<h1><%= @wiki.title %></h1>
-<p><%= markdown @wiki.information %></p>
+<div class="container">
+  <div class="layout layout-stack-sm layout-main-left">
+    <div class="col-sm-8 layout-main">
+      <h4 class="content-title">
+        <span>
+          <%= @wiki.title %>
+          <%= link_to 'edit', edit_wiki_path(@wiki) %> or 
+          <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %>
+      </h4>
+      <p><%= markdown @wiki.information %></p>
+      <br>
+      <br>
+    </div> <!-- /.col -->
 
-<%# if policy(@wiki).edit? %>
-  <%= link_to 'edit', edit_wiki_path(@wiki) %> or 
-  <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %> or
-  <%= link_to 'add collaborator', wiki_collaborators_path(@wiki) %>
-<%# end %>
+    <div class="col-sm-4 layout-sidebar">
+      <h4 class="content-title">
+        <u>Collaborators</u>
+        <%= link_to 'add collaborator', wiki_collaborators_path(@wiki), class: 'btn btn-primary'  %>
+        <%= link_to 'all users', users_path, class: 'btn btn-secondary' %>
+      </h4>
 
-<h3>Articles</h3>
-<% @wiki.articles.each do |article| %>
-  <p><%= link_to article.title, [@wiki, article] %></p>
-<% end %>
+        <div id="accordion-help" class="panel-group accordion-simple">
+          <% @wiki.users.each do |user| %>
+            <div class="panel">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= user.role %>"><%= user.email %></a>
+                </h4>
+              </div><!-- .panel-heading -->
 
-<h3>Add Article</h3>
-<%= link_to 'new article', new_wiki_article_path(@wiki), class: 'btn btn-success' %>
+              <div id="<%= user.role %>" class="panel-collapse collapse">
+                <div class="panel-body">
+                <p>
+                  CHANGE PERMISSIONS
+                  <select>
+                    <option value="one">One</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                  </select>
+                </p>
+                </div><!-- .panel-body -->
+              </div> <!-- ./panel-collapse -->
+            </div><!-- .panel -->
+            <% end %>
+          </div> <!-- /.accordion -->
+    
+  
+      <h4 class="content-title">
+        <u>Articles</u>
+      </h4>
+      <div class="list-group">
+        <% @wiki.articles.each do |article| %>
+          <%= link_to article.title, [@wiki, article], class: 'list-group-item' %>
+        <% end %>
+        <%= link_to 'new article', new_wiki_article_path(@wiki), class: 'btn btn-block btn-primary' %>
+      </div>
+    </div> <!-- /.col -->
+  </div> <!-- /.row -->
+</div> <!-- /.container -->     
+
+
+
