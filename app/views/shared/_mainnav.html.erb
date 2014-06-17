@@ -17,33 +17,21 @@
         <ul class="mainnav-menu">
 
           <li class="dropdown ">
-            <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-            Wikis
-            <i class="mainnav-caret"></i>
-            </a>
+            <%= link_to wikis_path do %>
+              <i class="fa fa-search"></i> Browse Public Wikis
+            <% end %>
+          </li>
 
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <a href="./index.html">
-                <i class="fa fa-dashboard"></i> 
-                &nbsp;&nbsp;Wiki All
-                </a>
-              </li>
+          <li class="dropdown ">
+            <%= link_to new_wiki_path do %>
+              <i class="fa fa-pencil"></i> Submit Public Wiki
+            <% end %>
+          </li>
 
-              <li>
-                <a href="./dashboard-2.html">
-                <i class="fa fa-dashboard"></i> 
-                &nbsp;&nbsp;Wiki New
-                </a>
-              </li>
-
-              <li>
-                <a href="./dashboard-3.html">
-                <i class="fa fa-dashboard"></i> 
-                &nbsp;&nbsp;Wiki Articles
-                </a>
-              </li>
-            </ul>
+          <li class="dropdown ">
+            <%= link_to users_path do %>
+              <i class="fa fa-user"></i> Collaborators
+            <% end %>
           </li>
 
         </ul>

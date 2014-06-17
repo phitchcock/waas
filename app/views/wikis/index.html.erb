@@ -16,3 +16,29 @@
     <% end %>
   <% end %>
 </div>
+
+                  <% @wikis.each do |wiki| %>
+                    <% if wiki.pubilc %>
+                  <div class="well">
+                  <div class="testimonial">
+                    
+                     <h5><%= link_to wiki.title, wiki %></h5>
+                    <p class="testimonial-text">
+                    <%= truncate(wiki.information, length: 200) %> <%= link_to 'read more ->', wiki %>
+                    </p>
+
+                    <div class="testimonials-arrow"></div>
+
+                    <div class="testimonial-author">
+                      <div class="testimonial-image"></div>
+
+                      <div class="testimonial-author-info">
+                        <h5><a href="#">Rod Howard</a></h5> Company
+                      </div>
+                    </div>
+                  </div> <!-- /.testimonial -->
+                </div>
+                <% end %>
+                <% end %>
+
+                

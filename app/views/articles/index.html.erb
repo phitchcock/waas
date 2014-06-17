@@ -1,7 +1,7 @@
 <h1>Articles for Wiki <%= link_to @wiki.title, @wiki %></h1>
 
 <div class="row">
-  <% @articles.each do |article| %>
+  <% @wiki.articles.each do |article| %>
   <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= article.created_at.strftime("%d") %><span><%= article.created_at.strftime("%b") %></span></div>
     <div class="recent-news-item-description">
       <h3 class="recent-news-item-title"><%= link_to article.title, [@wiki, article] %></h3>

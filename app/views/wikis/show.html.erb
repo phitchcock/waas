@@ -27,7 +27,7 @@
                 <h4 class="panel-title">
                   <div class="testimonial-image">
                     <%= image_tag(user.avatar.small.url) %>
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= user.role %>"><%= user.email %></a>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= user.role %>"><i class="fa fa-caret-down"></i><%= user.email %></a>
                 </h4>
               </div><!-- .panel-heading -->
 
@@ -57,6 +57,17 @@
             <% end %>
           </div> <!-- /.accordion -->
     
+      <h4 class="content-title">
+      <u>Wikis</u>
+      </h4>
+      <div class="list-group">
+        <% @wikis.each do |wiki| %>
+          <%= link_to wiki.title, wiki, class: 'list-group-item' %>
+        <% end %>
+        </br>
+        <%= link_to 'new wiki', new_wiki_path(@wiki), class: 'btn btn-block btn-primary' %>
+        <%= link_to 'my wikis', user_path(current_user), class: 'btn btn-block btn-secondary' %>
+      </div>
   
       <h4 class="content-title">
         <u>Articles</u>
