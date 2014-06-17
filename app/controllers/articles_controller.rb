@@ -15,11 +15,12 @@ class ArticlesController < ApplicationController
     @article = Article.new
   end
 
+
   def create
     @article = @wiki.articles.build(article_params)
 
     if @article.save
-      redirect_to wiki_path(@wiki), notice: 'Created article'
+      redirect_to [@wiki, @article], notice: 'Created article'
     else
       flash[:error] = 'Article was not created'
       render :new
@@ -27,7 +28,22 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    
+  end
+
+  def update
+    if @article.update(article_params)
+      redirect_to [@wiki, @article], notice: 'article updated'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if @article.destroy
+      redirect_to wiki_articles_path, notice: 'article destroyed'
+    else
+      render [@wiki, @article], notice: 'try again'
+    end
   end
 
   private

@@ -1,5 +1,12 @@
-<h1><%= @article.title %> <small><%= link_to 'edit', edit_wiki_article_path(@wiki, @article) %> | from wiki <%= @wiki.title %></small></h1>
-
+<div class="container">
+  <div class="layout layout-stack-sm layout-main-left">
+    <div class="col-sm-8 layout-main">
+      <h3 class="content-title">
+      <span>
+        <%= @article.title %> <small><%= link_to 'edit', edit_wiki_article_path(@wiki, @article) %> or <%= link_to 'delete', [@wiki, @article], method: :delete, data: {confirm: 'really'} %> | from wiki <%= link_to @wiki.title, @wiki %></small>
+      </span>
+      </h3>
+      <p><%= markdown @article.information %></p>
 
 <h3>Comments</h3>
 <hr>
@@ -13,6 +20,7 @@
     <div class="testimonial-image"><%= image_tag "blur-sm.jpg" %>
     <div class="testimonial-author-info">
       <h5><%= comment.user.email %></h5>
+      <p>commented <%= time_ago_in_words(comment.created_at) %> ago</p>
     </div>
   </div>
 </div> <!-- /.testimonial -->
@@ -30,3 +38,6 @@
   </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,13 @@
 <div class="container">
   <div class="layout layout-stack-sm layout-main-left">
     <div class="col-sm-8 layout-main">
-      <h4 class="content-title">
+      <h3 class="content-title">
         <span>
-          <%= @wiki.title %>
-          <%= link_to 'edit', edit_wiki_path(@wiki) %> or 
-          <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %>
-      </h4>
+          <%= @wiki.title %> <small> <%= link_to 'edit', edit_wiki_path(@wiki) %> or 
+          <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %> number of articles <%= link_to @wiki.articles.count, wiki_articles_path(@wiki) %></small>
+          
+        </span>
+      </h3>
       <p><%= markdown @wiki.information %></p>
       <br>
       <br>
@@ -38,6 +39,8 @@
                     <option value="three">Three</option>
                   </select>
                 </p>
+                <%= link_to 'Remove', wiki_collaborators_path(@wiki, user), method: :delete, data: {confirm: 'are you sure'}, class: 'btn btn-secondary' %> 
+
                 </div><!-- .panel-body -->
               </div> <!-- ./panel-collapse -->
             </div><!-- .panel -->
@@ -51,8 +54,9 @@
       <div class="list-group">
         <% @wiki.articles.each do |article| %>
           <%= link_to article.title, [@wiki, article], class: 'list-group-item' %>
-        <% end %>
+        <% end %></br>
         <%= link_to 'new article', new_wiki_article_path(@wiki), class: 'btn btn-block btn-primary' %>
+        <%= link_to 'all articles', wiki_articles_path(@wiki), class: 'btn btn-block btn-secondary' %>
       </div>
     </div> <!-- /.col -->
   </div> <!-- /.row -->

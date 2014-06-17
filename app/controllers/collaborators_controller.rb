@@ -14,7 +14,9 @@ class CollaboratorsController < ApplicationController
 
   def show
     @wiki = Wiki.friendly.find(params[:wiki_id])
-    @collaborator = @wiki.collaborators
+    @collaborator = Collaborator.find(params[:id])
+    
+    
   end
 
   def create
@@ -24,7 +26,7 @@ class CollaboratorsController < ApplicationController
     authorize @collaborator
 
     if @collaborator.save
-      redirect_to wiki_collaborators_path, notice: "Collaborator added!"
+      redirect_to wiki_collaborators_path(@wiki), notice: "Collaborator added!"
     else
       flash[:error] = "Collaborator did not save"
       redirect_to [@wiki, :collaborators]
@@ -33,13 +35,13 @@ class CollaboratorsController < ApplicationController
 
   def destroy
     @wiki = Wiki.friendly.find(params[:wiki_id])
-    @user = User.find(params[:user_id])
+    
     @collaborator = Collaborator.find(params[:id])
-
+   
     if @collaborator.destroy
-      redirect_to root_path, notice: 'collaborator has been removed'
+      redirect_to wiki_collaborators_path, notice: 'collaborator has been removed'
     else
-      redirect_to root_path
+      redirect_to @wiki, error: 'collaborator was not removed'
     end
   end
 

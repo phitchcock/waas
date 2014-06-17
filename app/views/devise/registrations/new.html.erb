@@ -4,7 +4,7 @@
     <h5>Sign up in 30 seconds. No credit card required.</h5>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= devise_error_messages! %>
+      <%#= devise_error_messages! %>
 
       <div class="form-group">
         <%= f.email_field :email, autofocus: true, placeholder: 'Email', class: 'form-control' %>

@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :articles do
       resources :comments
     end
-    resources :collaborators
+    resources :collaborators, only: [:index, :create, :destroy]
   end
   
 end

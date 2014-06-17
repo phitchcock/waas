@@ -10,6 +10,7 @@ class WikisController < ApplicationController
 
   def show
     @article = Article.new
+    #@collaborator = Collaborator.find(params[:collaborator_id])
     authorize @wiki
   end
 
@@ -47,7 +48,7 @@ class WikisController < ApplicationController
 
   def destroy
     if @wiki.destroy
-      redirect_to wikis_path, notice: "#{@wiki.title} was destroyed!"
+      redirect_to user_path(current_user), notice: "#{@wiki.title} was destroyed!"
     else
       flash[:error] = "Wiki was not destroyed, please try again"
       redirect_to @wiki

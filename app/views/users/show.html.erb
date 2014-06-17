@@ -20,13 +20,12 @@
     <div class="col-md-8 col-sm-7">
       <div id="myTabContent" class="tab-content stacked-content">
         <div class="tab-pane fade active in" id="home-3">
-          <h3>Public Wikis</h3>
+          <h2>Public Wikis</h2>
           <% @user.wikis.public_wikis.each do |wiki| %>
             <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= wiki.created_at.strftime("%d") %><span><%= wiki.created_at.strftime("%b") %></span></div>
               <div class="recent-news-item-description">
-                <h5 class="recent-news-item-title"><%= link_to wiki.title, wiki %></h5>
-                <span class="recent-news-item-comments">TODO ARTICLE COUNT</span></br>
-                <span class="recent-news-item-comments">TODO COMMENT COUNT</span>
+                <h3 class="recent-news-item-title"><%= link_to wiki.title, wiki %></h3>
+                <span class="recent-news-item-comments"><%= link_to wiki.articles.count, wiki_articles_path(wiki) %> Acticles</span></br>
                 <div class="recent-news-item-excerpt">
                   <p>
                     <%= truncate(wiki.information, length: 200) %> <%= link_to 'read more ->', wiki %>
@@ -37,11 +36,11 @@
           <% end %>
         </div> <!-- /.tab-pane -->
         <div class="tab-pane fade" id="profile-3">
-          <h3>Private Wikis</h3>
+          <h2>Private Wikis</h2>
           <% @user.wikis.private_wikis.each do |wiki| %>
             <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= wiki.created_at.strftime("%d") %><span><%= wiki.created_at.strftime("%b") %></span></div>
               <div class="recent-news-item-description">
-                <h5 class="recent-news-item-title"><%= link_to wiki.title, wiki %></h5>
+                <h3 class="recent-news-item-title"><%= link_to wiki.title, wiki %></h3>
                 <span class="recent-news-item-comments">TODO ARTICLE COUNT</span></br>
                 <span class="recent-news-item-comments">TODO COMMENT COUNT</span>
                 <div class="recent-news-item-excerpt">

@@ -1,38 +1,287 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+   <%= render 'shared/mainnav' %>
+   <div class="container">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= devise_error_messages! %>
+      <div class="layout layout-main-right layout-stack-sm">
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, autofocus: true %></div>
+        <div class="col-md-3 col-sm-4 layout-sidebar">
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+          <div class="nav-layout-sidebar-skip">
+            <strong>Tab Navigation</strong> / <a href="#settings-content">Skip to Content</a> 
+          </div>
 
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "off" %></div>
+          <ul id="myTab" class="nav nav-layout-sidebar nav-stacked">
+              <li class="active">
+              <a href="#profile-tab" data-toggle="tab">
+              <i class="fa fa-user"></i> 
+              &nbsp;&nbsp;Profile Settings
+              </a>
+            </li>
 
-  <div><%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %></div>
+            <li>
+              <a href="#password-tab" data-toggle="tab">
+              <i class="fa fa-lock"></i> 
+              &nbsp;&nbsp;Change Password
+              </a>
+            </li>
 
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "off" %></div>
+            <li>
+              <a href="#messaging" data-toggle="tab">
+              <i class="fa fa-bullhorn"></i> 
+              &nbsp;&nbsp;Notifications
+              </a>
+            </li>
 
-  <div><%= f.submit "Update" %></div>
-<% end %>
+            <li>
+              <a href="#payments" data-toggle="tab">
+              <i class="fa fa-dollar"></i> 
+              &nbsp;&nbsp;Payment Settings
+              </a>
+            </li>
+          </ul>
 
-<h3>Cancel my account</h3>
+        </div> <!-- /.col -->
 
-<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-<h3>Account Status</h3>
-<% if current_user.role == 'guest' %>
-  <h5>Please Upgrade Your Account</h5>
-  <%= link_to 'paid', new_charge_path, class: 'btn btn-success' %></br>
-<% else %>
-  <h5>You are a premium member!</h5>
-  <p>Your last charge was </p>
-<% end %>
-<%= link_to "Back", :back %>
+
+        <div class="col-md-9 col-sm-8 layout-main">
+          <div id="settings-content" class="tab-content stacked-content">
+            <div class="tab-pane fade in active" id="profile-tab">
+              <h3 class="content-title"><u>Edit Profile</u></h3>
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+              <br><br>
+
+              <form class="form-horizontal">
+                <div class="form-group">
+              <label class="col-md-3">Avatar</label>
+
+              <div class="col-md-7">
+                <div class="fileupload fileupload-new" data-provides="fileupload">
+                  <div class="fileupload-new thumbnail" style="width: 180px; height: 180px;">
+                    <%= image_tag "blur-sm.jpg" %>
+                  </div>
+
+                  <div>
+                      <a href="" class="btn btn-default">Upload</a>
+                      <a href="" class="btn btn-secondary">Remove</a>
+                  </div> 
+
+                </div> 
+
+              </div>
+            </div>
+            </form>
+
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= devise_error_messages! %>
+
+          <div class="form-group">
+            <%= f.label :email %><br />
+            <%= f.email_field :email, autofocus: true, class: 'form-control' %>
+          </div>
+
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div class="form-group">Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+
+          <div class="form-group">
+            <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+            <%= f.password_field :password, autocomplete: "off", class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+            <%= f.password_field :current_password, autocomplete: "off", class: 'form-control' %>
+          </div>
+
+          <div class="form-group">
+            <%= f.submit "Update", class: 'btn btn-primary' %>
+          </div>
+        <% end %>
+
+
+            </div> <!-- /.tab-pane -->
+
+
+
+            <div class="tab-pane fade" id="password-tab">
+
+              <h3 class="content-title"><u>Change Password</u></h3>
+
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+
+              <br><br>
+
+              <form action="./page-settings.html" class="form-horizontal">
+
+                <div class="form-group">
+
+                  <label class="col-md-3">Old Password</label>
+
+                  <div class="col-md-7">
+                    <input type="password" name="old-password" class="form-control" />
+                  </div> <!-- /.col -->
+
+                </div> <!-- /.form-group -->
+
+
+                <hr>
+
+
+                <div class="form-group">
+
+                  <label class="col-md-3">New Password</label>
+
+                  <div class="col-md-7">
+                    <input type="password" name="new-password-1" class="form-control" />
+                  </div> <!-- /.col -->
+
+                </div> <!-- /.form-group -->
+
+
+                <div class="form-group">
+
+                  <label class="col-md-3">New Password Confirm</label>
+
+                  <div class="col-md-7">
+                    <input type="password" name="new-password-2" class="form-control" />
+                  </div> <!-- /.col -->
+
+                </div> <!-- /.form-group -->
+
+
+                <div class="form-group">
+
+                  <div class="col-md-7 col-md-push-3">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    &nbsp;
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                  </div> <!-- /.col -->
+
+                </div> <!-- /.form-group -->
+
+              </form>
+
+            </div> <!-- /.tab-pane -->
+
+
+
+            <div class="tab-pane fade" id="messaging">
+
+              <h3 class="content-title"><u>Notification Settings</u></h3>
+
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</p>
+
+              <br><br>
+
+              <form action="./page-settings.html" class="form form-horizontal">
+
+                <div class="form-group">
+
+                  <label class="col-md-3">Toggle Notifications</label>
+
+                  <div class="col-md-7">
+
+                    <div class="checkbox">
+                      <label>
+                      <input value="" type="checkbox" checked>
+                      Send me security emails
+                      </label>
+                    </div> <!-- /.checkbox -->
+
+                    <div class="checkbox">
+                      <label>
+                      <input value="" type="checkbox" checked>
+                      Send system emails
+                      </label>
+                    </div> <!-- /.checkbox -->
+
+                    <div class="checkbox">
+                      <label>
+                      <input value="" type="checkbox">
+                      Lorem ipsum dolor sit amet
+                      </label>
+                    </div> <!-- /.checkbox -->
+
+                    <div class="checkbox">
+                      <label>
+                      <input value="" type="checkbox">
+                      Laborum, quam iure quibusdam
+                      </label>
+                    </div> <!-- /.checkbox -->
+
+                  </div> <!-- /.col -->
+
+                </div> <!-- /.form-group -->
+
+
+                <div class="form-group">
+
+                  <label class="col-md-3">Email for Notifications</label>
+
+                  <div class="col-md-7">
+                    <select name="email_notifications" class="form-control">
+                      <option value="1">john@mvpready.com</option>
+                      <option value="2">mary@mvpready.com</option>
+                      <option value="3">chris@mvpready.com</option>
+                    </select>
+                  </div> <!-- /.col -->
+
+                </div> <!-- /.form-group -->
+
+
+                <div class="form-group">
+
+                  <div class="col-md-7 col-md-push-3">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    &nbsp;
+                    <button type="reset" class="btn btn-default">Cancel</button>
+                  </div> <!-- /.col -->
+
+                </div> <!-- /.form-group -->
+
+              </form>
+
+            </div> <!-- /.tab-pane -->
+
+
+            <div class="tab-pane fade" id="payments">
+
+              <h3 class="content-title"><u>Payments Settings</u></h3>
+              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+
+              <h3>Account Status</h3>
+              <% if current_user.role == 'guest' %>
+                <h5>Please Upgrade Your Account</h5>
+                <%= link_to 'paid', new_charge_path, class: 'btn btn-primary' %></br>
+              <% else %>
+                <h5>You are a premium member!</h5>
+                <%= link_to 'you have paid', new_charge_path, class: 'btn btn-primary', disabled: "disabled" %></br>
+                <p>Your last charge was </p>
+              <% end %>
+
+              <h3>Cancel my account</h3>
+              <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-secondary' %></p>
+
+            </div> <!-- /.tab-pane -->
+
+            <div class="tab-pane fade" id="reports">
+              <h3 class="content-title"><u>Reports Settings</u></h3>
+              <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</p>
+
+              <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
+            </div> <!-- /.tab-pane -->
+
+          </div> <!-- /.tab-content -->
+
+        </div> <!-- /.col -->
+
+      </div> <!-- /.row -->
+
+
+    </div> <!-- /.container -->
 

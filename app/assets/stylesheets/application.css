@@ -11,8 +11,8 @@
  * file per style scope.
  *
  *= require bootstrap
- *= require mvpready-admin
  *= require mvpready-landing
+ *= require mvpready-admin
  *= require mvpready-flat
  *= require animate
  *= require font-awesome
