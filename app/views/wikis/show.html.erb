@@ -75,6 +75,7 @@
       <div class="list-group">
         <% @wiki.articles.each do |article| %>
           <%= link_to article.title, [@wiki, article], class: 'list-group-item' %>
+          <span class="badge badge-important"><%= article.comments.count %> comments</span>
         <% end %></br>
         <%= link_to 'new article', new_wiki_article_path(@wiki), class: 'btn btn-block btn-primary' %>
         <%= link_to 'all articles', wiki_articles_path(@wiki), class: 'btn btn-block btn-secondary' %>

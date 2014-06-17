@@ -34,6 +34,7 @@
               </div>
             </div> <!-- wiki-item -->
           <% end %>
+          <%= will_paginate @wikis, renderer: BootstrapPagination::Rails %>
         </div> <!-- /.tab-pane -->
         <div class="tab-pane fade" id="profile-3">
           <h2>Private Wikis</h2>

@@ -25,6 +25,8 @@ gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
 gem 'faker'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 group :development do 
   gem 'spring'

@@ -2,7 +2,7 @@ class CollaboratorsController < ApplicationController
 
   def index
     @wiki = Wiki.friendly.find(params[:wiki_id])
-    @collaborators = @wiki.collaborators
+    @collaborators = @wiki.collaborators.paginate(page: params[:page], per_page: 5)
     @non_collaborators = User.all # => joins(:collaborators).where('collaborators.wiki_id <> ?', @wiki.id)
     authorize @collaborators
   end
