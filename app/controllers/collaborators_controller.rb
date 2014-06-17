@@ -26,7 +26,7 @@ class CollaboratorsController < ApplicationController
     authorize @collaborator
 
     if @collaborator.save
-      redirect_to wiki_collaborators_path(@wiki), notice: "Collaborator added!"
+      redirect_to wiki_collaborators_path(@wiki) #, notice: "Collaborator added!"
     else
       flash[:error] = "Collaborator did not save"
       redirect_to [@wiki, :collaborators]

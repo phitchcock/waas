@@ -2,7 +2,7 @@ class WikiPolicy < ApplicationPolicy
 
   # class Scope < Struct.new(:user, :scope)
   #   def resolve
-  #     scope.where('role > 0')
+  #     scope.where('pubilc IS true')
   #   end
   # end
 
@@ -10,13 +10,28 @@ class WikiPolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    record.pubilc || collaboration.present? || user.present? && user.admin?
+  end
+
   def create_private?
-    user.premium? || user.admin?
+    user.present? && (user.admin? || user.premium?)
   end
 
   def create?
-    super && (record.pubilc || create_private?)
+    record.pubilc || create_private?
   end
 
+  def update?
+    record.pubilc ||
+    (collaboration.present? && (collaboration.role.admin? || collaboration.role.editor?)) ||
+    (user.present? && user.admin?)
+  end
+
+private
+  
+  def collaboration
+    @collaboration ||= Collaborator.find_by(user: user, wiki: record)
+  end
 
 end

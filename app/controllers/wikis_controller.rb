@@ -23,6 +23,7 @@ class WikisController < ApplicationController
   def create
     @wiki = Wiki.new(wiki_params)
     @wiki.users << current_user
+    # Collaborator.create(wiki: @wiki, current_user, role: 'admin')
 
     authorize @wiki
     if @wiki.save
