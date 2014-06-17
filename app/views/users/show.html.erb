@@ -37,6 +37,10 @@
         </div> <!-- /.tab-pane -->
         <div class="tab-pane fade" id="profile-3">
           <h2>Private Wikis</h2>
+          <% if current_user.role == 'guest' %>
+            <h5>Please Upgrade Your Account from Guest to Premium for Private Wiki Access</h5>
+            <%= link_to 'Upgrade', new_charge_path, class: 'btn btn-primary' %></br>
+          <% end %>
           <% @user.wikis.private_wikis.each do |wiki| %>
             <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= wiki.created_at.strftime("%d") %><span><%= wiki.created_at.strftime("%b") %></span></div>
               <div class="recent-news-item-description">

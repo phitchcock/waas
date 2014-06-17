@@ -282,11 +282,11 @@
 
               <h3>Account Status</h3>
               <% if current_user.role == 'guest' %>
-                <h5>Please Upgrade Your Account</h5>
-                <%= link_to 'paid', new_charge_path, class: 'btn btn-primary' %></br>
+                <h5>Please Upgrade Your Account from Guest to Premium</h5>
+                <%= link_to 'Upgrade', new_charge_path, class: 'btn btn-primary' %></br>
               <% else %>
                 <h5>You are a premium member!</h5>
-                <%= link_to 'you have paid', new_charge_path, class: 'btn btn-primary', disabled: "disabled" %></br>
+                <%= link_to 'paid', new_charge_path, class: 'btn btn-primary', disabled: "disabled" %></br>
                 <p>Your last charge was </p>
               <% end %>
 

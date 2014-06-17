@@ -11,9 +11,11 @@
     <nav class="collapse navbar-collapse" role="navigation">   
       <ul class="nav navbar-nav navbar-right mainnav-menu">     
         <% if user_signed_in? %>
-          <li><%= link_to 'public wikis', wikis_path %></li>
           <li><%= link_to 'my wikis', user_path(current_user) %></li>
-          <li><%= link_to 'collaborators', users_path %></li>
+          <!-- 
+          <li><%= link_to 'public wikis', wikis_path %></li>
+          <li><%= link_to 'collaborators', users_path %></li> 
+          -->
           <li class="dropdown navbar-profile">
             <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:;">
               <%= image_tag(current_user.avatar.small.url, class: 'navbar-profile-avatar') %>

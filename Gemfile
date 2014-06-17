@@ -24,6 +24,7 @@ gem 'rails-bootstrap-helpers'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog'
+gem 'faker'
 
 group :development do 
   gem 'spring'
