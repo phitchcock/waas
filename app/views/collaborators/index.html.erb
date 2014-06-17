@@ -1,4 +1,4 @@
-<h3>Collaborators</h3>
+<h3>Collaborators for Wiki <%= link_to @wiki.title, @wiki %></h3>
 <hr>
 <div class="row">
 <% @wiki.users.each do |user| %>
@@ -7,16 +7,12 @@
       <p class="thumbnail"><%= image_tag "blur-sm.jpg" %></p>
       <p><i class="fa fa-question-circle fa-5x text-muted"></i></p>
       <h4><%= user.email %></h4>
-      <p><%= user.role %></p>TODO REMOVE COLLABORATOR
-      
+      <p><%= user.role %></p>
       <%= link_to 'make collaborator', wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
 
       <% @collaborators.each do |collaborator| %>
-  <%#= collaborator.user.email %>
-  <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
-  <% end %>
-       
-       <%#= link_to 'remove collaborator', wiki_collaborator_path(collaborator.wiki, collaborator), method: :delete, data: {confirm: 'are you sure'}, class: 'btn btn-secondary' %>
+        <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
+      <% end %>
 
     </div> <!-- /.well -->
   </div>

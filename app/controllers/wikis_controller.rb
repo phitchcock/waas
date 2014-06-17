@@ -10,7 +10,7 @@ class WikisController < ApplicationController
 
   def show
     @article = Article.new
-    #@collaborator = Collaborator.find(params[:collaborator_id])
+    @collaborators = Collaborator.all
     authorize @wiki
   end
 

@@ -39,7 +39,15 @@
                     <option value="three">Three</option>
                   </select>
                 </p>
-                <%= link_to 'Remove', wiki_collaborators_path(@wiki, user), method: :delete, data: {confirm: 'are you sure'}, class: 'btn btn-secondary' %> 
+
+                <% @wiki.collaborators.each do |collaborator| %>
+  
+                  <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
+                <% end %>
+
+
+
+                <%#= link_to 'Remove', wiki_collaborators_path(@wiki, user), method: :delete, data: {confirm: 'are you sure'}, class: 'btn btn-secondary' %> 
 
                 </div><!-- .panel-body -->
               </div> <!-- ./panel-collapse -->
