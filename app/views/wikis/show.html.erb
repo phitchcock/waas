@@ -25,7 +25,9 @@
             <div class="panel">
               <div class="panel-heading">
                 <h4 class="panel-title">
-                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= user.role %>"><%= user.email %></a>
+                  <div class="testimonial-image">
+                    <%= image_tag(user.avatar.small.url) %>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= user.role %>"><%= user.email %></a>
                 </h4>
               </div><!-- .panel-heading -->
 

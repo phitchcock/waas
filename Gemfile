@@ -21,6 +21,9 @@ gem 'friendly_id'
 gem 'font-awesome-sass'
 gem 'google-webfonts'
 gem 'rails-bootstrap-helpers'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog'
 
 group :development do 
   gem 'spring'
