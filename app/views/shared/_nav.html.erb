@@ -6,6 +6,8 @@
         <i class="fa fa-cog"></i>
       </button>
       <%=  link_to 'WAAS', root_path, class: 'navbar-brand' %>
+
+      <% if user_signed_in? %>
       <ul class="nav navbar-nav noticebar navbar-left">
 
           <li class="dropdown">
@@ -132,6 +134,8 @@
           </li>
 
         </ul>
+        <% end %>
+        
     </div> <!-- /.navbar-header -->
 
     <nav class="collapse navbar-collapse" role="navigation">   
