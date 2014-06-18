@@ -9,6 +9,7 @@ class ArticlesController < ApplicationController
 
   def show
     @comment = Comment.new
+    @bookmark = Bookmark.new
   end
 
   def new

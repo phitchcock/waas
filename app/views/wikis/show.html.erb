@@ -1,37 +1,62 @@
 <div class="container">
   <div class="layout layout-stack-sm layout-main-left">
-    <div class="col-sm-8 layout-main">
+    <div class="col-md-9 layout-main">
       <h3 class="content-title">
         <span>
           <%= @wiki.title %> <small> <%= link_to 'edit', edit_wiki_path(@wiki) %> or 
-          <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %> number of articles <%= link_to @wiki.articles.count, wiki_articles_path(@wiki) %></small>
+          <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %></small>
           
         </span>
       </h3>
       <p><%= markdown @wiki.information %></p>
       <br>
       <br>
-    </div> <!-- /.col -->
-
-    <div class="col-sm-4 layout-sidebar">
+      <h4 class="content-title"><u>Activity Feed</u></h4>
+        <% @wiki.comments.each do |comment| %>
+        <div class="feed-item feed-item-idea">
+          <div class="feed-icon thumbnail">
+            <%= image_tag(comment.user.avatar.profile.url) %>
+            <i class="fa fa-lightbulb-o"></i>
+          </div> <!-- /.feed-icon -->
+          <div class="feed-subject">
+            <p><a href="javascript:;"><%= comment.user.email %></a> shared an idea: <a href="javascript:;">TODO</a></p>
+          </div> <!-- /.feed-subject -->
+          <div class="feed-content">
+            <ul class="icons-list">
+              <li>
+                <i class="icon-li fa fa-quote-left"></i>
+                <%= comment.info %>
+              </li>
+            </ul>
+          </div> <!-- /.feed-content -->
+          <div class="feed-actions">
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
+            <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
+          </div> <!-- /.feed-actions -->
+        </div> <!-- /.feed-item -->
+        <% end %>
+      <%= render 'shared/tabs' %>
+    </div>
+      
+      <div class="col-md-3 layout-sidebar">
       <h4 class="content-title">
-        <u>Collaborators</u>
-        <%= link_to 'add collaborator', wiki_collaborators_path(@wiki), class: 'btn btn-primary'  %>
-        <%= link_to 'all users', users_path, class: 'btn btn-secondary' %>
+         <u><%= @wiki.collaborators.count %> Collaborators</u>
+        <%= link_to 'add', wiki_collaborators_path(@wiki), class: 'btn btn-primary'  %>
       </h4>
 
         <div id="accordion-help" class="panel-group accordion-simple">
-          <% @wiki.users.each do |user| %>
+          <% @wiki.collaborators.each do |collaborator| %>
             <div class="panel">
               <div class="panel-heading">
                 <h4 class="panel-title">
                   <div class="testimonial-image">
-                    <%= image_tag(user.avatar.small.url) %>
-                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= user.role %>"><i class="fa fa-caret-down"></i><%= user.email %></a>
+                    <%= image_tag(collaborator.user.avatar.small.url) %>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= collaborator.user.role %>"><i class="fa fa-caret-down"></i><%= collaborator.user.email %></a>
                 </h4>
               </div><!-- .panel-heading -->
 
-              <div id="<%= user.role %>" class="panel-collapse collapse">
+              <div id="<%= collaborator.user.role %>" class="panel-collapse collapse">
                 <div class="panel-body">
                 <p>
                   CHANGE PERMISSIONS
@@ -41,16 +66,7 @@
                     <option value="three">Three</option>
                   </select>
                 </p>
-
-                <% @wiki.collaborators.each do |collaborator| %>
-  
-                  <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
-                <% end %>
-
-
-
-                <%#= link_to 'Remove', wiki_collaborators_path(@wiki, user), method: :delete, data: {confirm: 'are you sure'}, class: 'btn btn-secondary' %> 
-
+                <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
                 </div><!-- .panel-body -->
               </div> <!-- ./panel-collapse -->
             </div><!-- .panel -->
@@ -67,18 +83,6 @@
         </br>
         <%= link_to 'new wiki', new_wiki_path(@wiki), class: 'btn btn-block btn-primary' %>
         <%= link_to 'my wikis', user_path(current_user), class: 'btn btn-block btn-secondary' %>
-      </div>
-  
-      <h4 class="content-title">
-        <u>Articles</u>
-      </h4>
-      <div class="list-group">
-        <% @wiki.articles.each do |article| %>
-          <%= link_to article.title, [@wiki, article], class: 'list-group-item' %>
-          <span class="badge badge-important"><%= article.comments.count %> comments</span>
-        <% end %></br>
-        <%= link_to 'new article', new_wiki_article_path(@wiki), class: 'btn btn-block btn-primary' %>
-        <%= link_to 'all articles', wiki_articles_path(@wiki), class: 'btn btn-block btn-secondary' %>
       </div>
     </div> <!-- /.col -->
   </div> <!-- /.row -->

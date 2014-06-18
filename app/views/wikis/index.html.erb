@@ -1,13 +1,12 @@
 <h1>Public Wikis</h1>
 <hr>
-
 <div class="row">
   <% @wikis.each do |wiki| %>
   <% if wiki.pubilc %>
   <div class="recent-news-item clearfix well"><div class="recent-news-item-date"><%= wiki.created_at.strftime("%e") %><span><%= wiki.created_at.strftime("%b") %></span></div>
     <div class="recent-news-item-description">
       <h3 class="recent-news-item-title"><%= link_to wiki.title, wiki %></h3>
-      <span class="recent-news-item-comments"><%= link_to wiki.articles.count, wiki_articles_path(wiki) %> Articles</span></br>
+      <span class="recent-news-item-comments"><%#= link_to wiki.articles.count, wiki_articles_path(wiki) %> Articles</span></br>
       <div class="recent-news-item-excerpt">
         <p><%= truncate(wiki.information, length: 200) %> <%= link_to 'read more ->', wiki %></p>
         </div>

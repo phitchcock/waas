@@ -10,8 +10,10 @@ class WikisController < ApplicationController
 
   def show
     @wikis = Wiki.all
-    @article = Article.new
+    #@article = Article.new
     @collaborators = Collaborator.all
+    @comment = Comment.new
+    @bookmark = Bookmark.new
     authorize @wiki
   end
 

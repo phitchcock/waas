@@ -1,0 +1,77 @@
+<div class="container">
+      <div class="layout layout-main-right layout-stack-sm">
+        <div class="col-md-2 col-sm-4 layout-sidebar">
+          
+          <div class="nav-layout-sidebar-skip">
+            <strong>Tab Navigation</strong> / <a href="#settings-content">Skip to Content</a>
+          </div>
+          <ul id="myTab" class="nav nav-layout-sidebar nav-stacked">
+            <li class="active">
+              <a href="#profile-tab" data-toggle="tab">
+              <i class="fa fa-user"></i> 
+              &nbsp;&nbsp;Create Comment
+            </a>
+            </li>
+            <li>
+              <a href="#password-tab" data-toggle="tab">
+              <i class="fa fa-lock"></i> 
+              &nbsp;&nbsp;Create Bookmark
+              </a>
+            </li>
+          </ul>
+        </div> <!-- /.col -->
+        
+
+        <div class="col-md-9 col-sm-8 layout-main">
+          <div id="settings-content" class="tab-content stacked-content">
+
+            <div class="tab-pane fade in active" id="profile-tab">
+              <h3 class="content-title"><u>Add Comment</u></h3>
+              <%= form_for([@wiki, @comment]) do |f| %>
+                <div class="form-group">
+                  <div class="share-widget clearfix">
+                    <%= f.text_area :info, class: 'form-control share-widget-textarea' %>
+                    <div class="share-widget-actions">
+                      <div class="share-widget-types pull-left">
+                        <a href="javascript:;" class="fa fa-picture-o ui-tooltip" title="Post an Image"><i></i></a>
+                        <a href="javascript:;" class="fa fa-video-camera ui-tooltip" title="Upload a Video"><i></i></a>
+                        <a href="javascript:;" class="fa fa-lightbulb-o ui-tooltip" title="Post an Idea"><i></i></a>
+                        <a href="javascript:;" class="fa fa-question-circle ui-tooltip" title="Ask a Question"><i></i></a>
+                      </div> 
+                      <div class="pull-right">
+                        <%= f.submit class: 'btn btn-primary btn-sm' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            </div> <!-- /.tab-pane -->
+
+            <div class="tab-pane fade" id="password-tab">
+              <h3 class="content-title"><u>Add Bookmark</u></h3>
+              <%= form_for([@wiki, @bookmark]) do |f| %>
+                <div class="form-group">
+                  <div class="share-widget clearfix">
+                    <%= f.text_field :title, placeholder: 'title', class: 'form-control' %>
+                    <%= f.text_area :url, placeholder: 'url', class: 'form-control' %>
+                    <div class="share-widget-actions">
+                      <div class="share-widget-types pull-left">
+                        <a href="javascript:;" class="fa fa-picture-o ui-tooltip" title="Post an Image"><i></i></a>
+                        <a href="javascript:;" class="fa fa-video-camera ui-tooltip" title="Upload a Video"><i></i></a>
+                        <a href="javascript:;" class="fa fa-lightbulb-o ui-tooltip" title="Post an Idea"><i></i></a>
+                        <a href="javascript:;" class="fa fa-question-circle ui-tooltip" title="Ask a Question"><i></i></a>
+                      </div> 
+                      <div class="pull-right">
+                        <%= f.submit class: 'btn btn-primary btn-sm' %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+              
+
+            </div> <!-- /.tab-pane -->
+          </div> <!-- /.tab-content -->
+        </div> <!-- /.col -->
+      </div> <!-- /.row -->
+    </div> <!-- /.container -->
