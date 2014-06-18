@@ -2,7 +2,7 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope.join().where('user.role = 0 OR wiki.pubilc = TRUE')
+      scope.all
     end
   end
 
