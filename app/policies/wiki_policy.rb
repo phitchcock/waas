@@ -1,10 +1,10 @@
 class WikiPolicy < ApplicationPolicy
 
-  # class Scope < Struct.new(:user, :scope)
-  #   def resolve
-  #     scope.where('pubilc IS true')
-  #   end
-  # end
+  class Scope < Struct.new(:user, :scope)
+    def resolve
+      scope.join().where('user.role = 0 OR wiki.pubilc = TRUE')
+    end
+  end
 
   def index?
     true
