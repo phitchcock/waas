@@ -2,7 +2,11 @@ class WikiPolicy < ApplicationPolicy
 
   class Scope < Struct.new(:user, :scope)
     def resolve
-      scope.all
+      if user.admin?
+        scope.all
+      else
+        scope.public_wikis + user.wikis
+      end
     end
   end
 
