@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users
   
   resources :wikis do
-    #resources :articles do
+    resources :articles
     resources :bookmarks
     resources :comments
     resources :collaborators, only: [:index, :create, :destroy]

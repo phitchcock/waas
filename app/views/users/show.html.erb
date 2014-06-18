@@ -1,3 +1,5 @@
+<%= render 'shared/mainnav' %>
+<div class="container">
 <section>
   <div class="row">
     <% current_user.wikis.each do |wiki| %>
@@ -17,5 +19,7 @@
     <% end %>
   </div> <!-- /.row -->
 </section> <!-- /.demo-section -->
+
 <%= will_paginate @wikis, renderer: BootstrapPagination::Rails %>
 
+</div>

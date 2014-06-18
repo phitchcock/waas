@@ -8,13 +8,13 @@
       <ul class="mainnav-menu">
         <li class="dropdown ">
           <%= link_to user_path(current_user) do %>
-            <%= current_user.wikis.count %> Wikis<!-- <i class="fa fa-search"></i> Projects -->
+            <%= title %><!-- <i class="fa fa-search"></i> Projects -->
           <% end %>
         </li>
         <li class="dropdown pull-right">
-          <%= link_to new_wiki_path do %>
-            <button class="btn btn-primary">Create New Wiki</button><!-- <i class="fa fa-search"></i> Projects -->
-          <% end %>
+          <%#= link_to new_wiki_path do %>
+            <!-- <button class="btn btn-primary">Create New Wiki</button> --><!-- <i class="fa fa-search"></i> Projects -->
+          <%# end %>
         </li>
       </ul>
     </nav>

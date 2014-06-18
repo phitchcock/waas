@@ -51,7 +51,8 @@
                 </span>
                 <span class="noticebar-item-body">
                   <strong class="noticebar-item-title"><%= wiki.title %></strong>
-                  <span class="noticebar-item-text"><%= truncate(wiki.information, length: 50) %></span>
+                  <span class="noticebar-item-text">5 Todos<%#= markdown truncate(wiki.information, length: 50) %></span>
+                  <span class="noticebar-item-time">10 Comments</span>
                   <span class="noticebar-item-time"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(wiki.created_at) %> ago</span>
                 </span>
               </a>
@@ -66,7 +67,7 @@
           </ul>
         </li>
         <li>
-          <%= link_to 'People', users_path %>
+          <%= link_to 'Collaborators', users_path %>
         </li>
       </ul>
       <% end %>
@@ -78,12 +79,12 @@
       <% if user_signed_in? %>
         <li>
           <%= link_to wikis_path do %>
-              <i class="fa fa-search"></i> Browse Public Wikis
+              <i class="fa fa-search"></i> Public Wikis
             <% end %>
         </li>
           <li>
             <%= link_to new_wiki_path do %>
-              <i class="fa fa-pencil"></i> Submit Public Wiki
+              <i class="fa fa-pencil"></i> Submit Wiki
             <% end %>
           </li> 
           <li class="dropdown navbar-profile">
@@ -101,7 +102,7 @@
               </li>
               <li>
                 <%= link_to edit_user_registration_path(current_user) do %>
-                  <i class="fa fa-cogs"> Settings</i>
+                  <i class="fa fa-cogs"> Profile</i>
                 <% end %>
               </li>
               <li class="divider"></li>

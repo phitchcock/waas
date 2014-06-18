@@ -1,37 +1,47 @@
-<h3>Collaborators for Wiki <%= link_to @wiki.title, @wiki %></h3>
-<hr>
-<div class="row">
-<% @wiki.collaborators.each do |collaborator| %>
-  <div class="col-md-3">
-    <div class="well text-center">
-      <p class="thumbnail"><%= image_tag(collaborator.user.avatar.thumb.url) %></p>
-      <!-- <p><i class="fa fa-question-circle fa-5x text-muted"></i></p> -->
-
-
-      <h4><%= collaborator.user.email %></h4>
-      <p><%= collaborator.user.role %></p>
-      <%= link_to 'make collaborator', wiki_collaborators_path(@wiki, user_id: collaborator.user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
-
-      <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
-
-    </div> <!-- /.well -->
+<%= render 'shared/collaboratornav' %>
+<div class="container">
+  <h3>Collaborators</h3>
+  <hr>
+  <div class="row">
+  <% @wiki.collaborators.each do |collaborator| %>
+    <div class="col-md-3">
+      <div class="thumbnail text-center">
+        <div class="testimonial-image">
+          <%= image_tag(collaborator.user.avatar.thumb.url) %>
+        </div>
+        <div class="caption">
+          <h4><%= collaborator.user.email %></h4>
+          <p>online | <%= collaborator.user.wikis.count %> wikis</p>          
+        </div>
+        <div>
+          <%#= link_to 'make collaborator', wiki_collaborators_path(@wiki, user_id: collaborator.user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
+          <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
   </div>
-<% end %>
-</div>
-<%#= will_paginate @collaborators, renderer: BootstrapPagination::Rails %>
+  <%#= will_paginate @collaborators, renderer: BootstrapPagination::Rails %>
 
-<h3>Users</h3>
-<hr>
-<div class="row">
-<% @wiki.not_users.each do |user| %>
-  <div class="col-md-3">
-    <div class="well text-center">
-      <p class="thumbnail"><%= image_tag(user.avatar.thumb.url) %></p>
-      <h4><%= user.email %></h4>
-      <p><%= user.role %></p>
-      <%= link_to 'make collaborator', wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-secondary' %>
-    </div> <!-- /.well -->
+  <h3>Add Collaborator</h3>
+  <hr>
+  <div class="row">
+  <% @wiki.not_users.each do |user| %>
+    <div class="col-md-3">
+      <div class="thumbnail text-center">
+        <div class="testimonial-image">
+          <%= image_tag(user.avatar.thumb.url) %>
+        </div>
+        <div class="caption">
+          <h4><%= user.email %></h4>
+          <p>online | <%= user.wikis.count %> wikis</p> 
+        </div>
+        <div>
+          <%= link_to 'add collaborator', wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-secondary' %>
+        </div>
+      </div> <!-- /.well -->
+    </div>
+  <% end %>
   </div>
-<% end %>
+  <%#= will_paginate @users, renderer: BootstrapPagination::Rails %>
 </div>
-<%#= will_paginate @users, renderer: BootstrapPagination::Rails %>

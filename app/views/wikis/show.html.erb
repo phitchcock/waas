@@ -1,3 +1,4 @@
+<%= render 'shared/shownav' %>
 <div class="container">
   <div class="layout layout-stack-sm layout-main-left">
     <div class="col-md-9 layout-main">
@@ -46,7 +47,7 @@
 
       <h4 class="content-title">
          <u><%= @wiki.collaborators.count %> Collaborators</u>
-        <%= link_to 'add', wiki_collaborators_path(@wiki), class: 'btn btn-primary'  %>
+        <%#= link_to 'add', wiki_collaborators_path(@wiki), class: 'btn btn-primary'  %>
       </h4>
 
         <div id="accordion-help" class="panel-group accordion-simple">
@@ -96,17 +97,6 @@
               </a>
             </div> <!-- /.list-group -->
     
-      <h4 class="content-title">
-      <u>Wikis</u>
-      </h4>
-      <div class="list-group">
-        <% current_user.wikis.each do |wiki| %>
-          <%= link_to wiki.title, wiki, class: 'list-group-item' %>
-        <% end %>
-        </br>
-        <%= link_to 'new wiki', new_wiki_path(@wiki), class: 'btn btn-block btn-primary' %>
-        <%= link_to 'my wikis', user_path(current_user), class: 'btn btn-block btn-secondary' %>
-      </div>
     </div> <!-- /.col -->
   </div> <!-- /.row -->
 </div> <!-- /.container -->     
