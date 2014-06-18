@@ -6,7 +6,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @wikis = current_user.wikis.paginate(page: params[:page], per_page: 3)
+    @wikis = @user.wikis.paginate(page: params[:page], per_page: 5)
   end
 
   def update
