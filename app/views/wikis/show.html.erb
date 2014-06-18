@@ -11,6 +11,7 @@
       <p><%= markdown @wiki.information %></p>
       <br>
       <br>
+
       <h4 class="content-title"><u>Activity Feed</u></h4>
         <% @wiki.comments.each do |comment| %>
         <div class="feed-item feed-item-idea">
@@ -38,9 +39,7 @@
           <%= render 'shared/answer' %>
         </div> <!-- /.feed-item -->
         <% end %>
-
-      <%= render 'shared/tabs' %>
-
+        <%= render 'shared/tabs' %>
     </div>
       
       <div class="col-md-3 layout-sidebar">
