@@ -19,7 +19,7 @@
             <i class="fa fa-lightbulb-o"></i>
           </div> <!-- /.feed-icon -->
           <div class="feed-subject">
-            <p><a href="javascript:;"><%= comment.user.email %></a> shared an idea: <a href="javascript:;">TODO</a></p>
+            <p><a href="javascript:;"><%= comment.user.email %></a> shared a comment: <a href="javascript:;">TODO</a></p>
           </div> <!-- /.feed-subject -->
           <div class="feed-content">
             <ul class="icons-list">
@@ -34,12 +34,17 @@
             <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
             <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
           </div> <!-- /.feed-actions -->
+          <%= render 'shared/question' %>
+          <%= render 'shared/answer' %>
         </div> <!-- /.feed-item -->
         <% end %>
+
       <%= render 'shared/tabs' %>
+
     </div>
       
       <div class="col-md-3 layout-sidebar">
+
       <h4 class="content-title">
          <u><%= @wiki.collaborators.count %> Collaborators</u>
         <%= link_to 'add', wiki_collaborators_path(@wiki), class: 'btn btn-primary'  %>
@@ -72,6 +77,25 @@
             </div><!-- .panel -->
             <% end %>
           </div> <!-- /.accordion -->
+
+          <h4 class="content-title"><u>Stats</u></h4>
+            <div class="list-group">  
+              <a href="javascript:;" class="list-group-item">
+                  <h3 class="pull-right"><i class="fa fa-eye text-primary"></i></h3>
+                  <h4 class="list-group-item-heading">38,847</h4>
+                  <p class="list-group-item-text">Profile Views</p>                  
+                </a>
+              <a href="javascript:;" class="list-group-item">
+                <h3 class="pull-right"><i class="fa fa-facebook-square  text-primary"></i></h3>
+                <h4 class="list-group-item-heading">3,482</h4>
+                <p class="list-group-item-text">Facebook Likes</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <h3 class="pull-right"><i class="fa fa-twitter-square  text-primary"></i></h3>
+                <h4 class="list-group-item-heading">5,845</h4>
+                <p class="list-group-item-text">Twitter Followers</p>
+              </a>
+            </div> <!-- /.list-group -->
     
       <h4 class="content-title">
       <u>Wikis</u>
