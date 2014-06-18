@@ -9,32 +9,29 @@
 
       <nav class="collapse mainnav-collapse" role="navigation">
 
-        <form class="mainnav-form pull-right" role="search">
-          <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
-          <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
-        </form>
-
         <ul class="mainnav-menu">
 
           <li class="dropdown ">
-            <%= link_to wikis_path do %>
-              <i class="fa fa-search"></i> Browse Public Wikis
+            <%= link_to user_path(current_user) do %>
+              <%= current_user.wikis.count %> Wikis TODO PARTIAL<!-- <i class="fa fa-search"></i> Projects -->
             <% end %>
           </li>
 
-          <li class="dropdown ">
+          <li class="dropdown pull-right">
             <%= link_to new_wiki_path do %>
-              <i class="fa fa-pencil"></i> Submit Public Wiki
-            <% end %>
-          </li>
-
-          <li class="dropdown ">
-            <%= link_to users_path do %>
-              <i class="fa fa-user"></i> Collaborators
+              <button class="btn btn-primary">Create New Wiki</button><!-- <i class="fa fa-search"></i> Projects -->
             <% end %>
           </li>
 
         </ul>
+
+        <!-- <form class="mainnav-form pull-left" role="search">
+          <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
+          <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
+        </form> -->
+
+        
+
 
       </nav>
 

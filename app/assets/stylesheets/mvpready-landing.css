@@ -1953,15 +1953,15 @@ p {
   margin: 0px 0 0 19px;
 }
 .testimonial-image {
-  display: table-cell;
+  display: inline;
   vertical-align: top;
   position: relative;
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
 }
 .testimonial-image img {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
   padding: 4px;
   border: 1px solid #ddd;
   border-radius: 50px;
