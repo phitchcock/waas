@@ -27,6 +27,9 @@
 @import 'editor/epic-light';  
 */
 
+.push {
+  padding-top: 60px;
+}
 
 .center {
   text-align: center;

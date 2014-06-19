@@ -25,6 +25,9 @@
         <li>
           <a href="#dropdown4" data-toggle="tab">Activity Feed</a>
         </li>
+        <li class="pull-right">
+          <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %>
+        </li>
         <li class="dropdown pull-right">
           <%= link_to 'edit', edit_wiki_path(@wiki) %>
           <%#= link_to new_wiki_path do %>
