@@ -24,7 +24,7 @@ $(function(){
   //$('#myModal').modal()
 
   setTimeout(function(){
-    $('#flash').fadeOut();}, 5000);
+    $('#flash').fadeOut();}, 4000);
 
 
   var opts = {

@@ -166,14 +166,14 @@
         <h3 class="">
           Articles
           <span class="pull-right">
-            <%#= link_to 'add article', new_wiki_article_path(@wiki), class: "btn btn-secondary" %>
+            <%= link_to 'add article', new_wiki_article_path(@wiki), class: "btn btn-secondary" %>
           </span>
         </h3>
         <hr>
         <% @wiki.articles.each do |article| %>
           <div class="col-md-3">
             <div class="well">
-              <h5><%= article.title %></h5>
+              <h5><%= link_to article.title, [@wiki, article] %></h5>
             </div>
           </div>
         <% end %>
