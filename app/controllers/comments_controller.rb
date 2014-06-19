@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
 
+  
   def create
     @wiki = Wiki.friendly.find(params[:wiki_id])
     @comments = @wiki.comments
@@ -14,7 +15,6 @@ class CommentsController < ApplicationController
       flash[:error] = 'try again'
       redirect_to wiki_path(@wiki)
     end
-
   end
 
 end

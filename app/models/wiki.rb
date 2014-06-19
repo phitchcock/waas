@@ -6,6 +6,7 @@ class Wiki < ActiveRecord::Base
   scope :private_wikis, ->{where(pubilc: false)}
 
   #belongs_to :user
+  has_many :bookmarks, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :articles, dependent: :destroy
   has_many :collaborators
