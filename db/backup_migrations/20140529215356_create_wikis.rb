@@ -1,8 +1,8 @@
-class CreateWikis < ActiveRecord::Migration
+class Createideas < ActiveRecord::Migration
   def change
-    create_table :wikis do |t|
+    create_table :ideas do |t|
       t.string :title
-      t.text :information
+      t.text :body
       t.belongs_to :user
 
       t.timestamps

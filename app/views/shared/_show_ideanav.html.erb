@@ -1,0 +1,36 @@
+<div class="mainnav">
+  <div class="container">
+    <a class="mainnav-toggle" data-toggle="collapse" data-target=".mainnav-collapse">
+      <span class="sr-only">Toggle navigation</span>
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav class="collapse mainnav-collapse" role="navigation">
+      <ul class="mainnav-menu" id="myTab2">
+        <li class="dropdown active">
+          <a href="#home-1" data-toggle="tab"><%= @idea.title %></a>
+        </li>
+        <li class="dropdown">
+          <a href="#screen-1" data-toggle="tab">Screens</a>
+        </li>
+        <li class="dropdown">
+         <a href="#profile-2" data-toggle="tab">Comments</a>
+        </li>
+        <li>
+          <a href="#dropdown5" data-toggle="tab">Bookmarks</a>
+        </li>
+        <li>
+          <a href="#dropdown3" data-toggle="tab">Collaborators</a>
+        </li>
+        <li>
+          <a href="#dropdown4" data-toggle="tab">Activity Feed</a>
+        </li>
+        <li class="pull-right">
+          <%= link_to 'destroy', idea_path(@idea), method: :delete, data: {confirm: 'Really?'} %>
+        </li>
+        <li class="dropdown pull-right">
+          <%= link_to 'edit', edit_idea_path(@idea) %>
+        </li>
+      </ul>
+    </nav>
+  </div> <!-- /.container -->
+</div> <!-- /.mainnav -->

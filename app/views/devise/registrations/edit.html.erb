@@ -37,10 +37,10 @@
         </li>
       </ul>
       
-      <h4 class="">Wiki Collaborations</h4>
+      <h4 class="">idea Collaborations</h4>
       <ul class="nav nav-layout-sidebar nav-stacked">
-        <% current_user.wikis.each do |wiki| %>
-          <li><%= link_to wiki.title, wiki %></li>
+        <% current_user.ideas.each do |idea| %>
+          <li><%= link_to idea.title, idea %></li>
         <% end %>
       </ul>
 
@@ -54,7 +54,7 @@
           <br>
           <br>
 
-      <h3>Edit personal information</h3>
+      <h3>Edit personal body</h3>
       <%= form_for(current_user) do |f| %>
         <% if current_user.avatar? %>
           <div class="form-group fileupload fileupload-new">

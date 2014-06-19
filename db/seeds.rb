@@ -17,30 +17,30 @@ end
 users = User.all
 
 50.times do 
-  Wiki.create(
+  idea.create(
     title: Faker::Commerce.product_name,
-    information: Faker::Lorem.paragraph
+    body: Faker::Lorem.paragraph
     )
 end
-wikis = Wiki.all
+ideas = idea.all
 
 100.times do 
-  Article.create(
-    wiki: wikis.sample,
-    information: Faker::Lorem.paragraph
+  screen.create(
+    idea: ideas.sample,
+    body: Faker::Lorem.paragraph
     )
 end
-articles = Article.all
+screens = screen.all
 
 200.times do
   Comment.create(
     user: users.sample,
-    article: articles.sample,
+    screen: screens.sample,
     info: Faker::Lorem.paragraph
     )
 end
 
 puts "Seed finished"
-puts "#{Wiki.count} wikis created"
-puts "#{Article.count} articles created"
+puts "#{idea.count} ideas created"
+puts "#{screen.count} screens created"
 puts "#{Comment.count} comments created"

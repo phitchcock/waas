@@ -1,0 +1,24 @@
+<%= tinymce_assets %>
+<%= form_for(@idea) do |f| %>
+  <%= render 'shared/errors', obj: @idea %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control tinymce', size: '10x10' %>
+  </div>
+  <% if policy(Idea).create_private? %>
+    <div class="checkbox">
+      <%= f.label :public, class: 'checkbox' do %>
+        <%= f.check_box :public %> Public idea
+      <% end %>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'cancel', user_path(current_user), class: 'btn btn-default' %>
+  </div>
+<% end %>
+<%= tinymce %>

@@ -1,8 +1,8 @@
-<div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= wiki.created_at.strftime("%d") %><span><%= wiki.created_at.strftime("%b") %></span></div>
+<div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= idea.created_at.strftime("%d") %><span><%= idea.created_at.strftime("%b") %></span></div>
   <div class="recent-news-item-description">
-    <h5 class="recent-news-item-title"><%= link_to wiki.title, wiki %></h5>
-    <span class="recent-news-item-comments">TODO ARTICLE COUNT</span></br>
+    <h5 class="recent-news-item-title"><%= link_to idea.title, idea %></h5>
+    <span class="recent-news-item-comments">TODO screen COUNT</span></br>
     <span class="recent-news-item-comments">TODO COMMENT COUNT</span>
-    <div class="recent-news-item-excerpt"><%= truncate(wiki.information, length: 200) %> <%= link_to 'read more ->', wiki %></div>
+    <div class="recent-news-item-excerpt"><%= truncate(idea.body, length: 200) %> <%= link_to 'read more ->', idea %></div>
   </div>
-</div> <!-- wiki-item -->
+</div> <!-- idea-item -->

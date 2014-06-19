@@ -7,13 +7,13 @@
     <nav class="collapse mainnav-collapse" role="navigation">
       <ul class="mainnav-menu">
         <li class="dropdown ">
-          <%= link_to wiki_path(@wiki) do %>
-            Wiki: <%= @wiki.title %><!-- <i class="fa fa-search"></i> Projects -->
+          <%= link_to idea_path(@idea) do %>
+            idea: <%= @idea.title %>
           <% end %>
         </li>
         <li class="dropdown pull-right">
-          <%= link_to wiki_collaborators_path(@wiki) do %>
-            <button class="btn btn-primary">Add Collaborators</button><!-- <i class="fa fa-search"></i> Projects -->
+          <%= link_to idea_collaborators_path(@idea) do %>
+            <button class="btn btn-primary">Add Collaborators</button>
           <% end %>
         </li>
       </ul>

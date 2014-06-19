@@ -3,7 +3,7 @@
   <h3>Collaborators</h3>
   <hr>
   <div class="row">
-  <% @wiki.collaborators.each do |collaborator| %>
+  <% @idea.collaborators.each do |collaborator| %>
     <div class="col-md-3">
       <div class="thumbnail text-center">
         <div class="testimonial-image">
@@ -11,11 +11,11 @@
         </div>
         <div class="caption">
           <h4><%= collaborator.user.email %></h4>
-          <p>online | <%= collaborator.user.wikis.count %> wikis</p>          
+          <p>online | <%= collaborator.user.ideas.count %> ideas</p>          
         </div>
         <div>
-          <%#= link_to 'make collaborator', wiki_collaborators_path(@wiki, user_id: collaborator.user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
-          <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
+          <%#= link_to 'make collaborator', idea_collaborators_path(@idea, user_id: collaborator.user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
+          <%= link_to 'remove collaborator', idea_collaborator_path(@idea, collaborator), method: :delete, class: 'btn btn-secondary' %>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
   <h3>Add Collaborator</h3>
   <hr>
   <div class="row">
-  <% @wiki.not_users.each do |user| %>
+  <% @idea.not_users.each do |user| %>
     <div class="col-md-3">
       <div class="thumbnail text-center">
         <div class="testimonial-image">
@@ -34,10 +34,10 @@
         </div>
         <div class="caption">
           <h4><%= user.email %></h4>
-          <p>online | <%= user.wikis.count %> wikis</p> 
+          <p>online | <%= user.ideas.count %> ideas</p> 
         </div>
         <div>
-          <%= link_to 'add collaborator', wiki_collaborators_path(@wiki, user_id: user.id), method: :post, class: 'btn btn-secondary' %>
+          <%= link_to 'add collaborator', idea_collaborators_path(@idea, user_id: user.id), method: :post, class: 'btn btn-secondary' %>
         </div>
       </div> <!-- /.well -->
     </div>

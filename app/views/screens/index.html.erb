@@ -1,0 +1,20 @@
+<h1>screens for idea <%= link_to @idea.title, @idea %></h1>
+
+<div class="row">
+  <% @idea.screens.each do |screen| %>
+  <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= screen.created_at.strftime("%d") %><span><%= screen.created_at.strftime("%b") %></span></div>
+    <div class="recent-news-item-description">
+      <h3 class="recent-news-item-title"><%= link_to screen.title, [@idea, screen] %></h3>
+      <span class="recent-news-item-comments"><%= screen.comments.count %> Comments</span></br>
+      <span class="recent-news-item-comments">updated <%= time_ago_in_words(screen.updated_at) %> ago</span>
+      <div class="recent-news-item-excerpt">
+        <p><%= truncate(screen.body, length: 200) %> <%= link_to 'read more ->', [@idea, screen] %></p>
+        </div>
+    </div>
+  </div> <!-- idea-item -->
+  <% end %>
+  <%= link_to 'back', :back, class: 'btn btn-secondary' %>
+  <%= link_to 'new screen', new_idea_screen_path, class: 'btn btn-primary' %>
+</div>
+
+<%#= will_paginate @idea.screens, renderer: BootstrapPagination::Rails %>

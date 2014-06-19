@@ -20,7 +20,7 @@
 
 $(function(){
 
-  $('#example').popover()
+  $('#example').popover();
   //$('#myModal').modal()
 
   setTimeout(function(){
@@ -28,7 +28,7 @@ $(function(){
 
 
   var opts = {
-    textarea: 'wiki_information',
+    textarea: 'idea_body',
     string: {
       togglePreview: 'Toggle Preview Mode',
       toggleEdit: 'Toggle Edit Mode',

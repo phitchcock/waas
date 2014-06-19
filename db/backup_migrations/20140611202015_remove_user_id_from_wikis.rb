@@ -1,5 +1,5 @@
-class RemoveUserIdFromWikis < ActiveRecord::Migration
+class RemoveUserIdFromideas < ActiveRecord::Migration
   def change
-    remove_column :wikis, :user_id
+    remove_column :ideas, :user_id
   end
 end

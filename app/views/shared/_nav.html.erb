@@ -1,4 +1,4 @@
-<header class="navbar navbar-inverse navbar-fixed-top" role="banner">
+<header class="navbar navbar-inverse" role="banner">
   <div class="container">
     <div class="navbar-header">
       <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
@@ -47,40 +47,40 @@
       <ul class="nav navbar-nav noticebar navbar-left">
         <li class="dropdown">
           <a href="./page-notifications.html" class="dropdown-toggle" data-toggle="dropdown">
-            <span>Wikis</span>
+            <span>Ideas</span>
             <!-- <i class="fa fa-folder-open"></i> -->
             <span class="navbar-visible-collapsed">&nbsp;Notifications&nbsp;</span>
-            <span class="badge badge-primary"><%= current_user.wikis.count %></span>
+            <span class="badge badge-primary"><%= current_user.ideas.count %></span>
           </a>
           <ul class="dropdown-menu noticebar-menu noticebar-hoverable" role="menu">
             <li class="nav-header">
               <div class="pull-left">
-                Wikis
+                ideas
               </div>
               <div class="pull-right">
                 <a href="javascript:;">Mark as Read</a>
               </div>
             </li>
-            <% current_user.wikis.each do |wiki| %>
+            <% current_user.ideas.each do |idea| %>
             <li>
               <a href="/users" class="noticebar-item">
                 <span class="noticebar-item-image">
                   <i class="fa fa-lightbulb-o text-success"></i>
                 </span>
                 <span class="noticebar-item-body">
-                  <strong class="noticebar-item-title"><%= wiki.title %></strong>
-                  <span class="noticebar-item-text">5 Todos<%#= markdown truncate(wiki.information, length: 50) %></span>
+                  <strong class="noticebar-item-title"><%= idea.title %></strong>
+                  <span class="noticebar-item-text">5 Todos<%#= markdown truncate(idea.body, length: 50) %></span>
                   <span class="noticebar-item-time">10 Comments</span>
-                  <span class="noticebar-item-time"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(wiki.created_at) %> ago</span>
+                  <span class="noticebar-item-time"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(idea.created_at) %> ago</span>
                 </span>
               </a>
             </li>
             <% end %>
             <li>
-              <%= link_to 'VIEW ALL WIKIS', user_path(current_user), class: 'btn btn-primary' %>
+              <%= link_to 'VIEW ALL ideaS', user_path(current_user), class: 'btn btn-primary' %>
             </li>
             <li>
-              <%= link_to 'New Wiki', new_wiki_path, class: 'btn btn-secondary' %>
+              <%= link_to 'New idea', new_idea_path, class: 'btn btn-secondary' %>
             </li>
           </ul>
         </li>
@@ -96,8 +96,8 @@
       <ul class="nav navbar-nav navbar-right noticebar">     
       <% if user_signed_in? %>
         <li>
-          <%= link_to wikis_path do %>
-              <i class="fa fa-search"></i> Public Wikis
+          <%= link_to ideas_path do %>
+              <i class="fa fa-search"></i> Public ideas
             <% end %>
         </li>
 
@@ -117,8 +117,8 @@
           Popover on bottom
         </button> -->
           <!-- <li>
-            <%#= link_to new_wiki_path do %>
-              <i class="fa fa-pencil"></i> Submit Wiki
+            <%#= link_to new_idea_path do %>
+              <i class="fa fa-pencil"></i> Submit idea
             <%# end %>
           </li> -->
           <li class="dropdown navbar-profile">
@@ -131,7 +131,7 @@
             <ul class="dropdown-menu" role="menu">
               <li>
                 <%= link_to user_path(current_user) do %>
-                  <i class="fa fa-user"></i> My Wikis
+                  <i class="fa fa-user"></i> My ideas
                 <% end %>
               </li>
               <li>

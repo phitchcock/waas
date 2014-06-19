@@ -1,5 +1,5 @@
-class AddPublicToWikis < ActiveRecord::Migration
+class AddPublicToideas < ActiveRecord::Migration
   def change
-    add_column :wikis, :pubilc, :boolean, default: false
+    add_column :ideas, :public, :boolean, default: false
   end
 end

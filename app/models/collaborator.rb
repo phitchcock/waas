@@ -1,6 +1,6 @@
 class Collaborator < ActiveRecord::Base
   belongs_to :user
-  belongs_to :wiki
+  belongs_to :idea
 
-  validates_uniqueness_of :user_id, scope: :wiki_id
+  validates_uniqueness_of :user_id, scope: :idea_id
 end

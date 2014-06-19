@@ -28,10 +28,12 @@ gem 'faker'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'tinymce-rails'
+gem 'acts_as_votable'
 
 group :development do 
   gem 'spring'
   gem 'sqlite3'
+  gem 'pry'
 end
 
 group :production do 

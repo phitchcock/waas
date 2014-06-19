@@ -1,0 +1,20 @@
+<%= render 'shared/content_title', title: 'Public Ideas' %>
+<div class="container">
+  <div class="row">
+    <% @ideas.each do |idea| %>
+    <% if idea.public %>
+    <div class="recent-news-item clearfix well"><div class="recent-news-item-date"><%= idea.created_at.strftime("%e") %><span><%= idea.created_at.strftime("%b") %></span></div>
+      <div class="recent-news-item-description">
+        <h3 class="recent-news-item-title"><%= link_to idea.title, idea %></h3>
+        <span class="recent-news-item-comments"><%#= link_to idea.screens.count, idea_screens_path(idea) %> screens</span></br>
+        <div class="recent-news-item-excerpt">
+          <p><%= markdown truncate(idea.body, length: 100) %> <%= link_to 'read more ->', idea %></p>
+          </div>
+      </div>
+    </div> <!-- idea-item -->
+      <% end %>
+    <% end %>
+  </div>
+  <%= will_paginate @ideas, renderer: BootstrapPagination::Rails %>           
+</div>
+                

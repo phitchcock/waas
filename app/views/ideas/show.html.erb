@@ -1,0 +1,216 @@
+<%= render 'shared/show_ideanav' %>
+<div class="container">
+  <section>
+    <div id="myTab2Content" class="tab-content">
+
+      <div class="tab-pane fade in active" id="home-1">
+        <h3 class="content-title"><u>Overview</u></h3>
+        <%= markdown @idea.body %>
+
+        <h3 class="content-title"><u>Top Rated</u></h3>
+        <div>
+          <h5>COMMENTS <%= @idea.comments.count %></h5>
+          <h5>BOOKMARKS <%= @idea.bookmarks.count %></h5>
+          <h5>screenS <%= @idea.screens.count %></h5>
+        </div>
+        <br>
+
+        <h3 class="content-title"><u>Completed or Favorites</u></h3>
+        <div>
+          <h5>ASSETS</h5>
+          <h5>MARKETING</h5>
+          <h5>TODO</h5>
+        </div>
+        <br>
+
+      </div> <!-- /.tab-pane -->
+
+
+      <div class="tab-pane fade" id="profile-2">
+        <h3 class="content-title"><u>Add Comment</u></h3>
+          <%= render 'shared/comment' %>
+
+        <h4 class="content-title"><u>Comments</u></h4>
+        <% @idea.comments.each do |comment| %>
+        <div class="feed-item feed-item-idea">
+          <div class="feed-icon thumbnail">
+            <%= image_tag(comment.user.avatar.profile.url) %>
+            <i class="fa fa-lightbulb-o"></i>
+          </div> <!-- /.feed-icon -->
+          <div class="feed-subject">
+            <p><a href="javascript:;"><%= comment.user.email %></a> shared a comment: <a href="javascript:;">TODO</a></p>
+          </div> <!-- /.feed-subject -->
+          <div class="feed-content">
+            <ul class="icons-list">
+              <li>
+                <i class="icon-li fa fa-quote-left"></i>
+                <%= comment.info %>
+              </li>
+            </ul>
+          </div> <!-- /.feed-content -->
+          <div class="feed-actions">
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
+            <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
+          </div> <!-- /.feed-actions -->
+          <%#= render 'shared/question' %>
+          <%#= render 'shared/answer' %>
+        </div> <!-- /.feed-item -->
+        <% end %>
+      </div> <!-- /.tab-pane -->
+
+      <div class="tab-pane fade" id="dropdown3">
+      <h3>Collaborators
+        <span class="pull-right">
+            <%= link_to 'add collaborator', idea_collaborators_path(@idea), class: "btn btn-secondary" %>
+          </span>
+        </h3>
+      <hr>
+      <div class="row">
+      <% @idea.collaborators.each do |collaborator| %>
+        <div class="col-md-3">
+          <div class="thumbnail text-center">
+            <div class="testimonial-image">
+              <%= image_tag(collaborator.user.avatar.thumb.url) %>
+            </div>
+            <div class="caption">
+              <h4><%= collaborator.user.email %></h4>
+              <p>online | <%= collaborator.user.ideas.count %> ideas</p>          
+            </div>
+            <div>
+              <%#= link_to 'make collaborator', idea_collaborators_path(@idea, user_id: collaborator.user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
+              <%= link_to 'remove collaborator', idea_collaborator_path(@idea, collaborator), method: :delete, class: 'btn btn-secondary' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+      </div>
+      </div> <!-- /.tab-pane -->
+
+      <div class="tab-pane fade" id="dropdown4">
+        <h4 class="content-title"><u>Activity Feed</u></h4>
+        <% @idea.comments.each do |comment| %>
+        <div class="feed-item feed-item-idea">
+          <div class="feed-icon thumbnail">
+            <%= image_tag(comment.user.avatar.profile.url) %>
+            <i class="fa fa-lightbulb-o"></i>
+          </div> <!-- /.feed-icon -->
+          <div class="feed-subject">
+            <p><a href="javascript:;"><%= comment.user.email %></a> shared a comment: <a href="javascript:;">TODO</a></p>
+          </div> <!-- /.feed-subject -->
+          <div class="feed-content">
+            <ul class="icons-list">
+              <li>
+                <i class="icon-li fa fa-quote-left"></i>
+                <%= comment.info %> | comment id: <%= comment.id %>
+              </li>
+            </ul>
+          </div> <!-- /.feed-content -->
+          
+          
+
+          <!-- <div class="vote-arrows pull-left">
+            <%#= link_to 'thumbs up', idea_up_vote_path(comment.idea, comment), :remote => true %>
+          </div> -->
+
+          <div class="feed-actions">
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
+            <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
+          </div> <!-- /.feed-actions -->
+          <%#= render 'shared/question' %>
+          <%#= render 'shared/answer' %>
+        </div> <!-- /.feed-item -->
+        <% end %>
+        <%= render 'shared/idea_created' %>
+        <div>
+          
+        </div>
+        
+    </div> <!-- tab pane -->
+
+    <div class="tab-pane fade" id="dropdown5">
+    <h3 class="content-title"><u>Add Bookmark</u></h3>
+    <%= form_for([@idea, @bookmark]) do |f| %>
+      <div class="form-group">
+        <div class="share-widget clearfix">
+          <%= f.text_field :title, placeholder: 'title', class: 'form-control' %>
+          <%= f.text_area :url, placeholder: 'url', class: 'form-control' %>
+          <div class="share-widget-actions">
+            <div class="share-widget-types pull-left">
+              <a href="javascript:;" class="fa fa-picture-o ui-tooltip" title="Post an Image"><i></i></a>
+              <a href="javascript:;" class="fa fa-video-camera ui-tooltip" title="Upload a Video"><i></i></a>
+              <a href="javascript:;" class="fa fa-lightbulb-o ui-tooltip" title="Post an Idea"><i></i></a>
+              <a href="javascript:;" class="fa fa-question-circle ui-tooltip" title="Ask a Question"><i></i></a>
+            </div> 
+            <div class="pull-right">
+              <%= f.submit class: 'btn btn-primary btn-sm' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+    <h4 class="content-title"><u>Bookmarks</u></h4>
+        <% @idea.bookmarks.each do |bookmark| %>
+        <div class="feed-item feed-item-idea">
+          <div class="feed-icon thumbnail">
+            <%= image_tag(bookmark.user.avatar.profile.url) %>
+            <i class="fa fa-lightbulb-o"></i>
+          </div> <!-- /.feed-icon -->
+          <div class="feed-subject">
+            <p><a href="javascript:;"><%= bookmark.user.email %></a> shared a comment: <a href="javascript:;">TODO</a></p>
+          </div> <!-- /.feed-subject -->
+          <div class="feed-content">
+            <ul class="icons-list">
+              <li>
+                <i class="icon-li fa fa-quote-left"></i>
+                <%= bookmark.title %>
+              </li>
+            </ul>
+          </div> <!-- /.feed-content -->
+          <div class="feed-actions">
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
+            <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(bookmark.created_at) %> ago</a>
+          </div> <!-- /.feed-actions -->
+          <%#= render 'shared/question' %>
+          <%#= render 'shared/answer' %>
+        </div> <!-- /.feed-item -->
+        <% end %>
+    </div> <!-- tab pane -->
+
+     <div class="tab-pane fade" id="screen-1">
+        <h3 class="">
+          Screens
+          <span class="pull-right">
+            <%= link_to 'Add Screen', new_idea_screen_path(@idea), class: "btn btn-secondary" %>
+          </span>
+        </h3>
+        <hr>
+         <% if @idea.screens.count == 0 %>
+            <h3>Please Add a Screen <small>TODO</small> </h3>
+          <% end %>
+
+        <% @idea.screens.each do |screen| %>
+          <div class="col-md-3">
+            
+              <div class="thumbnail">
+                <div class="thumbnail">
+                  <%= image_tag 'http://placehold.it/350x350' %>
+                </div>
+                <div class="caption">
+                  <h3><%= link_to screen.title, [@idea, screen] %></h3>
+                  <span class="pull-right"> Comments</span>
+                  <span>Public </span>
+                  <p>Created <%= time_ago_in_words(screen.created_at) %> ago</p>
+                </div>
+              </div>
+            
+          </div>
+        <% end %>
+      </div> <!-- /.tab-pane -->
+
+    </div> <!-- /.tab-content -->
+  </section> <!-- /.demo-section -->
+</div>

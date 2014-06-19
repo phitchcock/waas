@@ -1,0 +1,14 @@
+<%= form_for([@idea, @screen]) do |f| %>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control', size: '10x10' %>
+  </div>
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-primary' %>
+    <%= link_to 'cancel', :back, class: 'btn btn-default' %>
+  </div>
+<% end %>

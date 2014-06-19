@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619174101) do
+ActiveRecord::Schema.define(version: 20140619204602) do
 
-  create_table "articles", force: true do |t|
+  create_table "screens", force: true do |t|
     t.string   "title"
-    t.text     "information"
-    t.integer  "wiki_id"
+    t.text     "body"
+    t.integer  "idea_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
   end
 
-  add_index "articles", ["slug"], name: "index_articles_on_slug"
+  add_index "screens", ["slug"], name: "index_screens_on_slug"
 
   create_table "bookmarks", force: true do |t|
     t.string   "title"
     t.string   "url"
-    t.integer  "wiki_id"
+    t.integer  "idea_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -35,17 +35,17 @@ ActiveRecord::Schema.define(version: 20140619174101) do
 
   create_table "collaborators", force: true do |t|
     t.integer  "user_id"
-    t.integer  "wiki_id"
+    t.integer  "idea_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "comments", force: true do |t|
-    t.text     "info"
+    t.text     "body"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "wiki_id"
+    t.integer  "idea_id"
   end
 
   create_table "friendly_id_slugs", force: true do |t|
@@ -82,15 +82,16 @@ ActiveRecord::Schema.define(version: 20140619174101) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "wikis", force: true do |t|
+
+  create_table "ideas", force: true do |t|
     t.string   "title"
-    t.text     "information"
+    t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "pubilc",      default: true
+    t.boolean  "public",      default: true
     t.string   "slug"
   end
 
-  add_index "wikis", ["slug"], name: "index_wikis_on_slug"
+  add_index "ideas", ["slug"], name: "index_ideas_on_slug"
 
 end

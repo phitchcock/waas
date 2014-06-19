@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   resources :charges, only: [:new, :create]
   resources :users
   
-  resources :wikis do
-    resources :articles
+  resources :ideas do
+    resources :screens
     resources :bookmarks
     resources :comments
+    get '/up-vote' => 'comments#up_vote', as: :up_vote
     resources :collaborators, only: [:index, :create, :destroy]
   end
   

@@ -1,7 +1,7 @@
-<%= form_for([@wiki, @comment]) do |f| %>
+<%= form_for([@idea, @comment]) do |f| %>
           <div class="form-group">
             <div class="share-widget clearfix">
-              <%= f.text_area :info, class: 'form-control share-widget-textarea' %>
+              <%= f.text_area :body, class: 'form-control share-widget-textarea' %>
               <div class="share-widget-actions">
                 <div class="share-widget-types pull-left">
                   <a href="javascript:;" class="fa fa-picture-o ui-tooltip" title="Post an Image"><i></i></a>

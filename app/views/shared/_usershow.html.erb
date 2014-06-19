@@ -1,6 +1,6 @@
 <h3><%= current_user.email %></h3>
 <section class="demo-section">
-  <h4 class="content-title"><u>Wikis</u></h4>
+  <h4 class="content-title"><u>ideas</u></h4>
   <div class="row">
     <div class="col-md-3 col-sm-5">
       <ul id="myTab" class="nav nav-pills nav-stacked">
@@ -14,47 +14,47 @@
             &nbsp;&nbsp;Private
           </a>
         </li>
-        <li><%= link_to 'New Wiki', new_wiki_path, class: 'btn btn-secondary btn-block' %></li>
+        <li><%= link_to 'New idea', new_idea_path, class: 'btn btn-secondary btn-block' %></li>
       </ul>
     </div> <!-- /.col -->
     <div class="col-md-8 col-sm-7">
       <div id="myTabContent" class="tab-content stacked-content">
         <div class="tab-pane fade active in" id="home-3">
-          <h2>Public Wikis</h2>
-          <% @user.wikis.public_wikis.each do |wiki| %>
-            <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= wiki.created_at.strftime("%d") %><span><%= wiki.created_at.strftime("%b") %></span></div>
+          <h2>Public ideas</h2>
+          <% @user.ideas.public_ideas.each do |idea| %>
+            <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= idea.created_at.strftime("%d") %><span><%= idea.created_at.strftime("%b") %></span></div>
               <div class="recent-news-item-description">
-                <h3 class="recent-news-item-title"><%= link_to wiki.title, wiki %></h3>
-                <span class="recent-news-item-comments"><%#= link_to wiki.articles.count, wiki_articles_path(wiki) %> Acticles</span></br>
+                <h3 class="recent-news-item-title"><%= link_to idea.title, idea %></h3>
+                <span class="recent-news-item-comments"><%#= link_to idea.screens.count, idea_screens_path(idea) %> Acticles</span></br>
                 <div class="recent-news-item-excerpt">
                   <p>
-                    <%= truncate(wiki.information, length: 200) %> <%= link_to 'read more ->', wiki %>
+                    <%= truncate(idea.body, length: 200) %> <%= link_to 'read more ->', idea %>
                   </p>
                 </div>
               </div>
-            </div> <!-- wiki-item -->
+            </div> <!-- idea-item -->
           <% end %>
-          <%= will_paginate @wikis, renderer: BootstrapPagination::Rails %>
+          <%= will_paginate @ideas, renderer: BootstrapPagination::Rails %>
         </div> <!-- /.tab-pane -->
         <div class="tab-pane fade" id="profile-3">
-          <h2>Private Wikis</h2>
+          <h2>Private ideas</h2>
           <% if current_user.role == 'guest' %>
-            <h5>Please Upgrade Your Account from Guest to Premium for Private Wiki Access</h5>
+            <h5>Please Upgrade Your Account from Guest to Premium for Private idea Access</h5>
             <%= link_to 'Upgrade', new_charge_path, class: 'btn btn-primary' %></br>
           <% end %>
-          <% @user.wikis.private_wikis.each do |wiki| %>
-            <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= wiki.created_at.strftime("%d") %><span><%= wiki.created_at.strftime("%b") %></span></div>
+          <% @user.ideas.private_ideas.each do |idea| %>
+            <div class="recent-news-item clearfix"><div class="recent-news-item-date"><%= idea.created_at.strftime("%d") %><span><%= idea.created_at.strftime("%b") %></span></div>
               <div class="recent-news-item-description">
-                <h3 class="recent-news-item-title"><%#= link_to wiki.title, wiki %></h3>
-                <span class="recent-news-item-comments">TODO ARTICLE COUNT</span></br>
+                <h3 class="recent-news-item-title"><%#= link_to idea.title, idea %></h3>
+                <span class="recent-news-item-comments">TODO screen COUNT</span></br>
                 <span class="recent-news-item-comments">TODO COMMENT COUNT</span>
                 <div class="recent-news-item-excerpt">
                   <p>
-                    <%= truncate(wiki.information, length: 200) %> <%= link_to 'read more ->', wiki %>
+                    <%= truncate(idea.body, length: 200) %> <%= link_to 'read more ->', idea %>
                   </p>
                   </div>
               </div>
-            </div> <!-- wiki-item -->
+            </div> <!-- idea-item -->
           <% end %>
         </div> <!-- /.tab-pane -->
       </div> <!-- /.tab-content -->

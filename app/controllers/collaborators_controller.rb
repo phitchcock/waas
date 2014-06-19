@@ -1,9 +1,9 @@
 class CollaboratorsController < ApplicationController
 
   def index
-    @wiki = Wiki.friendly.find(params[:wiki_id])
-    @collaborators = @wiki.collaborators.paginate(page: params[:page], per_page: 5)
-    @non_collaborators = User.all # => joins(:collaborators).where('collaborators.wiki_id <> ?', @wiki.id)
+    @idea = Idea.friendly.find(params[:idea_id])
+    @collaborators = @idea.collaborators.paginate(page: params[:page], per_page: 5)
+    @non_collaborators = User.all # => joins(:collaborators).where('collaborators.idea_id <> ?', @idea.id)
     authorize @collaborators
   end
   
@@ -13,35 +13,35 @@ class CollaboratorsController < ApplicationController
   end
 
   def show
-    @wiki = Wiki.friendly.find(params[:wiki_id])
+    @idea = Idea.friendly.find(params[:idea_id])
     @collaborator = Collaborator.find(params[:id])
     
     
   end
 
   def create
-    @wiki = Wiki.friendly.find(params[:wiki_id])
+    @idea = Idea.friendly.find(params[:idea_id])
     @user = User.find(params[:user_id])
-    @collaborator = Collaborator.new(wiki: @wiki, user: @user)
+    @collaborator = Collaborator.new(idea: @idea, user: @user)
     authorize @collaborator
 
     if @collaborator.save
-      redirect_to wiki_collaborators_path(@wiki) #, notice: "Collaborator added!"
+      redirect_to idea_collaborators_path(@idea) #, notice: "Collaborator added!"
     else
       flash[:error] = "Collaborator did not save"
-      redirect_to [@wiki, :collaborators]
+      redirect_to [@idea, :collaborators]
     end
   end
 
   def destroy
-    @wiki = Wiki.friendly.find(params[:wiki_id])
+    @idea = Idea.friendly.find(params[:idea_id])
     
     @collaborator = Collaborator.find(params[:id])
    
     if @collaborator.destroy
-      redirect_to wiki_collaborators_path, notice: 'collaborator has been removed'
+      redirect_to idea_collaborators_path, notice: 'collaborator has been removed'
     else
-      redirect_to @wiki, error: 'collaborator was not removed'
+      redirect_to @idea, error: 'collaborator was not removed'
     end
   end
 

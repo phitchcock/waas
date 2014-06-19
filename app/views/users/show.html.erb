@@ -1,28 +1,28 @@
 <%= render 'shared/mainnav' %>
 <div class="container">
-  <% if @user.wikis.count == 0 %>
-    <h3>Please Add a Wiki</h3>
+  <% if @user.ideas.count == 0 %>
+    <h3>Please Add a idea</h3>
   <% end %>
-<section>
-  <div class="row">
-    <% current_user.wikis.each do |wiki| %>
-    <div class="col-md-3">
-      <div class="well">
+  <section>
+    <div class="row">
+      <% current_user.ideas.each do |idea| %>
+      <div class="col-md-3">
         <div class="thumbnail">
-          <%= image_tag 'http://placehold.it/350x350' %>
+          <div class="thumbnail">
+            <%= image_tag 'http://placehold.it/350x350' %>
+          </div>
+          <div class="caption">
+            <h3><%= link_to idea.title, idea %></h3>
+            <span class="pull-right"><%= idea.comments.count %> Comments</span>
+            <span>Public <%= idea.public %></span>
+            <p>Last activity <%= time_ago_in_words(idea.updated_at) %> ago</p>
+          </div>
         </div>
-        <div class="caption">
-          <h3><%= link_to wiki.title, wiki %></h3>
-          <span class="pull-right"><%= wiki.comments.count %> Comments</span>
-          <span>Public <%= wiki.pubilc %></span>
-          <p>Last activity <%= time_ago_in_words(wiki.updated_at) %> ago</p>
-        </div>
-      </div>
-    </div> <!-- /.col -->
-    <% end %>
-  </div> <!-- /.row -->
-</section> <!-- /.demo-section -->
+      </div> <!-- col -->
+      <% end %>
+    </div> <!-- row -->
+  </section> <!-- demo-section -->
 
-<%= will_paginate @wikis, renderer: BootstrapPagination::Rails %>
+<%= will_paginate @ideas, renderer: BootstrapPagination::Rails %>
 
 </div>

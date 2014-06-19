@@ -10,14 +10,14 @@
           </div>
           <div class="caption">
             <h4><%= user.email %></h4>
-            <p>online | <%= user.wikis.count %> wikis</p>
+            <p>online | <%= user.ideas.count %> ideas</p>
           </div>
           <div>
             <%= link_to 'invite collaborator', users_path, class: 'btn btn-secondary' %>
           </div>
         </div>
-      </div> <!-- /.col -->
+      </div> <!-- col -->
       <% end %>
-    </div> <!-- /.row -->
-  </section> <!-- /.demo-section -->
+    </div> <!-- row -->
+  </section> <!-- section -->
 </div>

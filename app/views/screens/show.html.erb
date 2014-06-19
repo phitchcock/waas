@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="layout layout-stack-sm layout-main-left">
+    <div class="layout-main">
+      <h3 class="content-title">
+      <span>
+        <%= @screen.title %> <small><%= link_to 'edit', edit_idea_screen_path(@idea, @screen) %> or <%= link_to 'delete', [@idea, @screen], method: :delete, data: {confirm: 'really'} %> | from idea <%= link_to @idea.title, @idea %></small>
+      </span>
+      </h3>
+
+      <div>
+        <p><%= markdown @screen.body %></p>
+      </div>
+      <br>
+      <br>
+      <br>
+    </div>
+  </div>
+</div>
+
+        
+
+    
