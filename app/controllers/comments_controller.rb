@@ -4,8 +4,9 @@ class CommentsController < ApplicationController
     @wiki = Wiki.friendly.find(params[:wiki_id])
     @comments = @wiki.comments
     @comment = current_user.comments.build(params.require(:comment).permit!)
-    @comment.wiki = @wiki
-    @new_comment = Comment.new
+    
+    #@comment.wiki = @wiki
+    #@new_comment = Comment.new
 
     if @comment.save
       flash[:notice] = 'comment created'
