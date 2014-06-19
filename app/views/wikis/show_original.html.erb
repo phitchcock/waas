@@ -1,0 +1,126 @@
+<%= render 'shared/shownav' %>
+<div class="container">
+  <div class="layout layout-stack-sm layout-main-left">
+    <div class="col-md-9 layout-main">
+      <h3 class="content-title">
+        <span>
+          <%= @wiki.title %> <small> <%= link_to 'edit', edit_wiki_path(@wiki) %> or 
+          <%= link_to 'destroy', wiki_path(@wiki), method: :delete, data: {confirm: 'Really?'} %></small>
+          
+        </span>
+      </h3>
+      <p><%= markdown @wiki.information %></p>
+      <br>
+      <br>
+      
+    <div>
+      <% @wiki.articles.each do |article| %>
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="feed-icon">
+    
+            <i class="fa fa-lightbulb-o"></i>
+          </div> <!-- /.feed-icon -->
+            <p><%= link_to article.title, [@wiki, article] %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+
+
+      <h4 class="content-title"><u>Activity Feed</u></h4>
+        <% @wiki.comments.each do |comment| %>
+        <div class="feed-item feed-item-idea">
+          <div class="feed-icon thumbnail">
+            <%= image_tag(comment.user.avatar.profile.url) %>
+            <i class="fa fa-lightbulb-o"></i>
+          </div> <!-- /.feed-icon -->
+          <div class="feed-subject">
+            <p><a href="javascript:;"><%= comment.user.email %></a> shared a comment: <a href="javascript:;">TODO</a></p>
+          </div> <!-- /.feed-subject -->
+          <div class="feed-content">
+            <ul class="icons-list">
+              <li>
+                <i class="icon-li fa fa-quote-left"></i>
+                <%= comment.info %>
+              </li>
+            </ul>
+          </div> <!-- /.feed-content -->
+          <div class="feed-actions">
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
+            <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
+          </div> <!-- /.feed-actions -->
+          <%= render 'shared/question' %>
+          <%= render 'shared/answer' %>
+        </div> <!-- /.feed-item -->
+        <% end %>
+        <%= render 'shared/tabs' %>
+    </div>
+      
+      <div class="col-md-3 layout-sidebar">
+
+      <h4 class="content-title">
+         <u><%= @wiki.collaborators.count %> Collaborators</u>
+        <%#= link_to 'add', wiki_collaborators_path(@wiki), class: 'btn btn-primary'  %>
+      </h4>
+
+        <div id="accordion-help" class="panel-group accordion-simple">
+          <% @wiki.collaborators.each do |collaborator| %>
+            <div class="panel">
+              <div class="panel-heading">
+                <h4 class="panel-title">
+                  <div class="testimonial-image">
+                    <%= image_tag(collaborator.user.avatar.small.url) %>
+                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-help" href="#<%= collaborator.user.role %>"><i class="fa fa-caret-down"></i><%= collaborator.user.email %></a>
+                </h4>
+              </div><!-- .panel-heading -->
+
+              <div id="<%= collaborator.user.role %>" class="panel-collapse collapse">
+                <div class="panel-body">
+                <p>
+                  CHANGE PERMISSIONS
+                  <select>
+                    <option value="one">One</option>
+                    <option value="two">Two</option>
+                    <option value="three">Three</option>
+                  </select>
+                </p>
+                <%= link_to 'remove collaborator', wiki_collaborator_path(@wiki, collaborator), method: :delete, class: 'btn btn-secondary' %>
+                </div><!-- .panel-body -->
+              </div> <!-- ./panel-collapse -->
+            </div><!-- .panel -->
+            <% end %>
+          </div> <!-- /.accordion -->
+
+          <h4 class="content-title"><u>Stats</u></h4>
+            <div class="list-group">  
+              <a href="javascript:;" class="list-group-item">
+                  <h3 class="pull-right"><i class="fa fa-eye text-primary"></i></h3>
+                  <h4 class="list-group-item-heading">38,847</h4>
+                  <p class="list-group-item-text">Profile Views</p>                  
+                </a>
+              <a href="javascript:;" class="list-group-item">
+                <h3 class="pull-right"><i class="fa fa-facebook-square  text-primary"></i></h3>
+                <h4 class="list-group-item-heading">3,482</h4>
+                <p class="list-group-item-text">Facebook Likes</p>
+              </a>
+              <a href="javascript:;" class="list-group-item">
+                <h3 class="pull-right"><i class="fa fa-twitter-square  text-primary"></i></h3>
+                <h4 class="list-group-item-heading">5,845</h4>
+                <p class="list-group-item-text">Twitter Followers</p>
+              </a>
+            </div> <!-- /.list-group -->
+    
+    </div> <!-- /.col -->
+  </div> <!-- /.row -->
+</div> <!-- /.container -->     
+
+
+

@@ -46,7 +46,7 @@
 
             <div class="tab-pane fade in active" id="profile-tab">
               <h3 class="content-title"><u>Add Comment</u></h3>
-              <%= form_for([@wiki, @article, @comment]) do |f| %>
+              <%= form_for([@wiki, @comment]) do |f| %>
                 <div class="form-group">
                   <div class="share-widget clearfix">
                     <%= f.text_area :info, class: 'form-control share-widget-textarea' %>
@@ -68,7 +68,7 @@
 
             <div class="tab-pane fade" id="password-tab">
               <h3 class="content-title"><u>Add Bookmark</u></h3>
-              <%= form_for([@wiki, @article, @bookmark]) do |f| %>
+              <%= form_for([@wiki, @bookmark]) do |f| %>
                 <div class="form-group">
                   <div class="share-widget clearfix">
                     <%= f.text_field :title, placeholder: 'title', class: 'form-control' %>
