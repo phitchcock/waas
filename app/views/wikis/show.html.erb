@@ -28,14 +28,7 @@
 
       <div class="tab-pane fade" id="profile-2">
         <h3 class="content-title"><u>Add Comment</u></h3>
-        <%= form_for([@wiki, @comment]) do |f| %>
-          <div>
-            <%= f.text_field :info %>
-          </div>
-          <div>
-            <%= f.submit %>
-          </div>
-        <% end %>
+          <%= render 'shared/comment' %>
 
         <h4 class="content-title"><u>Comments</u></h4>
         <% @wiki.comments.each do |comment| %>
