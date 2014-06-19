@@ -4,4 +4,6 @@ class Article < ActiveRecord::Base
   has_many :bookmarks, dependent: :destroy
   #has_many :comments, dependent: :destroy
   belongs_to :wiki
+  validates :title, presence: true
+  validates :information, presence: true
 end

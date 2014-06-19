@@ -1,5 +1,8 @@
 <%= render 'shared/mainnav' %>
 <div class="container">
+  <% if @user.wikis.count == 0 %>
+    <h3>Please Add a Wiki</h3>
+  <% end %>
 <section>
   <div class="row">
     <% current_user.wikis.each do |wiki| %>

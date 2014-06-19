@@ -23,6 +23,9 @@ $(function(){
   $('#example').popover()
   //$('#myModal').modal()
 
+  setTimeout(function(){
+    $('#flash').fadeOut();}, 5000);
+
 
   var opts = {
     textarea: 'wiki_information',
