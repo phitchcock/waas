@@ -2,27 +2,12 @@
 <div class="container">
   <section>
     <div id="myTab2Content" class="tab-content">
+
       <div class="tab-pane fade in active" id="home-1">
         <h3 class="content-title"><u>Overview</u></h3>
         <%= markdown @wiki.information %>
       </div> <!-- /.tab-pane -->
 
-      <!-- <div class="tab-pane fade in active" id="home-2">
-        <h3 class="">
-          Articles
-          <span class="pull-right">
-            <%#= link_to 'add article', new_wiki_article_path(@wiki), class: "btn btn-secondary" %>
-          </span>
-        </h3>
-        <hr>
-        <%# @wiki.articles.each do |article| %>
-          <div class="col-md-3">
-            <div class="well">
-              <h5><%#= article.title %></h5>
-            </div>
-          </div>
-        <%# end %>
-      </div> --> <!-- /.tab-pane -->
 
       <div class="tab-pane fade" id="profile-2">
         <h3 class="content-title"><u>Add Comment</u></h3>
@@ -126,10 +111,15 @@
             <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
             <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
           </div> <!-- /.feed-actions -->
-          <%= render 'shared/question' %>
-          <%= render 'shared/answer' %>
+          <%#= render 'shared/question' %>
+          <%#= render 'shared/answer' %>
         </div> <!-- /.feed-item -->
         <% end %>
+        <%= render 'shared/wiki_created' %>
+        <div>
+          
+        </div>
+        
     </div> <!-- tab pane -->
 
     <div class="tab-pane fade" id="dropdown5">
@@ -154,6 +144,23 @@
       </div>
     <% end %>
     </div> <!-- tab pane -->
+
+     <div class="tab-pane fade" id="article-1">
+        <h3 class="">
+          Articles
+          <span class="pull-right">
+            <%#= link_to 'add article', new_wiki_article_path(@wiki), class: "btn btn-secondary" %>
+          </span>
+        </h3>
+        <hr>
+        <% @wiki.articles.each do |article| %>
+          <div class="col-md-3">
+            <div class="well">
+              <h5><%= article.title %></h5>
+            </div>
+          </div>
+        <% end %>
+      </div> <!-- /.tab-pane -->
 
     </div> <!-- /.tab-content -->
   </section> <!-- /.demo-section -->

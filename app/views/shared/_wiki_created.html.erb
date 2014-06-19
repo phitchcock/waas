@@ -1,0 +1,21 @@
+<div class="feed-item feed-item-question">
+  <div class="feed-icon">
+    <i class="fa fa-lightbulb-o"></i>
+  </div> <!-- /.feed-icon -->
+  <div class="feed-subject">
+    <p><a href="javascript:;">WIKI CREATOR</a> created a wiki <%= @wiki.title %></p>
+  </div> <!-- /.feed-subject -->
+  <div class="feed-content">
+    <ul class="icons-list">
+      <li>
+        <i class="icon-li fa fa-quote-left"></i>
+          <%= truncate(@wiki.information, length: 100) %>
+      </li>
+    </ul>
+  </div> <!-- /.feed-content -->
+  <div class="feed-actions">
+    <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+    <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
+    <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(@wiki.created_at) %> ago</a>
+  </div> <!-- /.feed-actions -->
+</div> <!-- /.feed-item -->

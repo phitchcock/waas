@@ -82,6 +82,19 @@
               <i class="fa fa-search"></i> Public Wikis
             <% end %>
         </li>
+        <li><a data-toggle="modal" href="#myModal" class="">Support</a></li>
+        <li>
+          <a href="#" id="example" type="button" class="" 
+            data-container="body" data-toggle="popover" data-placement="bottom"
+            data-original-title="Share The Love!" 
+            data-content="TODO ADD FORM TO INVITE USERS">
+            <i class="fa fa-heart"></i></a>  
+        </li>
+
+
+        <!-- <button type="button" class="btn btn-default" data-container="body" data-toggle="   popover" data-placement="bottom" data-content="Vivamus sagittis lacus.">
+          Popover on bottom
+        </button> -->
           <!-- <li>
             <%#= link_to new_wiki_path do %>
               <i class="fa fa-pencil"></i> Submit Wiki
@@ -105,6 +118,11 @@
                   <i class="fa fa-cogs"> Profile</i>
                 <% end %>
               </li>
+              <li>
+                <%= link_to edit_user_registration_path(current_user) do %>
+                  <i class="fa fa-cogs"> Upgrade Plan</i>
+                <% end %>
+              </li>
               <li class="divider"></li>
               <li>
                 <%= link_to destroy_user_session_path, method: :delete do %>
@@ -120,6 +138,30 @@
         <% end %>   
       </ul>
     </nav>
+
+    <!-- Modal -->
+    <!-- <div id="myModal" class="modal fade in" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <a class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+                    <h4 class="modal-title" id="myModalLabel">Modal Heading</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>Text in a modal</h4>
+                    <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula.</p>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group">
+                    <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+ 
+            </div><!-- /.modal-content -->
+        <!-- </div><!-- /.modal-dalog -->
+      <!-- </div><!-- /.modal -->
 
   </div> <!-- /.container -->
 

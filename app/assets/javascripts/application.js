@@ -19,6 +19,11 @@
 //= require_tree .
 
 $(function(){
+
+  $('#example').popover()
+  //$('#myModal').modal()
+
+
   var opts = {
     textarea: 'wiki_information',
     string: {
@@ -33,4 +38,5 @@ $(function(){
     }
   };
   var editor = new EpicEditor(opts).load();
+
 });
