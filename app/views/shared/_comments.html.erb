@@ -15,6 +15,7 @@
                 <%= comment.body %>
               </li>
             </ul>
+            <p><%= link_to 'reply', new_idea_comment_path(comment.id) %></p>
           </div> <!-- /.feed-content -->
           <div class="feed-actions">
             <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 

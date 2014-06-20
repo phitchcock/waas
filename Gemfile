@@ -31,6 +31,7 @@ gem 'tinymce-rails'
 gem 'acts_as_votable'
 gem 'omniauth-facebook'
 gem 'public_activity'
+gem 'closure_tree'
 
 group :development do 
   gem 'spring'

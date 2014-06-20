@@ -1,5 +1,6 @@
 <%= form_for([@idea, @comment]) do |f| %>
           <div class="form-group">
+            <%= f.hidden_field :parent_id %>
             <div class="share-widget clearfix">
               <%= f.text_area :body, class: 'form-control share-widget-textarea' %>
               <div class="share-widget-actions">

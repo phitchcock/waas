@@ -12,7 +12,7 @@ class IdeasController < ApplicationController
     @ideas = Idea.all
     #@screen = screen.new
     @collaborators = Collaborator.all
-    @comment = Comment.new
+    @comment = Comment.new(parent_id: params[:parent_id])
     @bookmark = Bookmark.new
     authorize @idea
   end

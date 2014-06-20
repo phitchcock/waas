@@ -15,7 +15,9 @@ Rails.application.routes.draw do
     resources :screens
     resources :bookmarks
     resources :comments
-    get '/up-vote' => 'comments#up_vote', as: :up_vote
+    #get 'ideas/comments/new/(:parent_id)', to: 'comments#new', as: :new_comment
+    #get '/ideas/:idea_id/comments/new(:parent_id)', to: 'comments#new', as: :new_comment
+    #get '/up-vote' => 'comments#up_vote', as: :up_vote
     resource :collaborators, only: [:show, :update, :destroy]
   end
   
