@@ -2,18 +2,18 @@
 <div class="container">
   <section>
     <div class="row">
-      <% @users.each do |user| %>
+      <% current_user.collaborators.each do |collab| %>
       <div class="col-md-3 text-center">
         <div class="thumbnail" style="text-align: center">
           <div class="testimonial-image">
-            <%= image_tag(user.avatar.thumb.url) %>
+            <%#= image_tag(collab.avatar.thumb.url) %>
           </div>
           <div class="caption">
-            <h4><%= user.email %></h4>
-            <p>online | <%= user.ideas.count %> ideas</p>
+            <h4><%= link_to collab.idea.title, [collab.idea] %></h4>
+            <p>online | <%= collab.idea.comments.count %> comments</p>
           </div>
           <div>
-            <%= link_to 'invite collaborator', users_path, class: 'btn btn-secondary' %>
+            <%#= link_to 'invite collaborator', users_path, class: 'btn btn-secondary' %>
           </div>
         </div>
       </div> <!-- col -->

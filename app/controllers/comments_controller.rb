@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
   end
 
   def up_vote
-    binding.pry
+    #binding.pry
     @comment = Comment.find(params[:id])
     current_user.vote_for(@comment)
     respond_to do |format|

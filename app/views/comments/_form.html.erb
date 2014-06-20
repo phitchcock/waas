@@ -1,7 +1,7 @@
 <%= form_for ([@idea, @comment]), remote: true do |f| %>
   <div class="form-group">
-    <%= f.label :info %>
-    <%= f.text_area :info, class: 'form-control' %>
+    <%= f.label :body %>
+    <%= f.text_area :body, class: 'form-control' %>
   </div>
   <%= f.submit class: 'btn btn-primary' %>
 <% end %>

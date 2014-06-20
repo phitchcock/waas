@@ -55,7 +55,7 @@
           <ul class="dropdown-menu noticebar-menu noticebar-hoverable" role="menu">
             <li class="nav-header">
               <div class="pull-left">
-                ideas
+                Ideas
               </div>
               <div class="pull-right">
                 <a href="javascript:;">Mark as Read</a>
@@ -85,7 +85,7 @@
           </ul>
         </li>
         <li>
-          <%= link_to 'Collaborators', users_path %>
+          <%= link_to 'Collaborations', users_path %>
         </li>
       </ul>
       <% end %>
@@ -97,7 +97,7 @@
       <% if user_signed_in? %>
         <li>
           <%= link_to ideas_path do %>
-              <i class="fa fa-search"></i> Public ideas
+              <i class="fa fa-search"></i> Public Ideas
             <% end %>
         </li>
 
