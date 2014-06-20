@@ -62,7 +62,7 @@
       <hr>
       <div class="row">
       <% @idea.collaborators.each do |collaborator| %>
-        <div class="col-md-3">
+        <div class="col-md-4">
           <div class="thumbnail text-center">
             <div class="testimonial-image">
               <%= image_tag(collaborator.user.avatar.thumb.url) %>
@@ -118,7 +118,15 @@
         <% end %>
         <%= render 'shared/idea_created' %>
         <div>
-          
+          <% @idea.bookmarks.each do |b| %>
+            <p>bookmark created <%= time_ago_in_words(b.created_at) %> ago</p>
+          <% end %>
+        </div>
+
+        <div>
+          <% @idea.collaborators.each do |c| %>
+            <p><%= c.user.email %> joined collaboration <%= time_ago_in_words(c.created_at) %> ago</p>
+          <% end %>
         </div>
         
     </div> <!-- tab pane -->

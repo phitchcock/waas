@@ -69,8 +69,8 @@
                 </span>
                 <span class="noticebar-item-body">
                   <strong class="noticebar-item-title"><%= idea.title %></strong>
-                  <span class="noticebar-item-text">5 Todos<%#= markdown truncate(idea.body, length: 50) %></span>
-                  <span class="noticebar-item-time">10 Comments</span>
+                  <span class="noticebar-item-text"><%= idea.screens.count %> Screens</span>
+                  <span class="noticebar-item-time"><%= idea.comments.count %> Comments</span>
                   <span class="noticebar-item-time"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(idea.created_at) %> ago</span>
                 </span>
               </a>
