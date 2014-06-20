@@ -73,7 +73,7 @@
             </div>
             <div>
               <%#= link_to 'make collaborator', idea_collaborators_path(@idea, user_id: collaborator.user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
-              <%= link_to 'remove collaborator', idea_collaborator_path(@idea, collaborator), method: :delete, class: 'btn btn-secondary' %>
+              <%= link_to 'remove collaborator', idea_collaborators_path(@idea, collaborator), method: :delete, class: 'btn btn-secondary' %>
             </div>
           </div>
         </div>
@@ -117,6 +117,9 @@
         </div> <!-- /.feed-item -->
         <% end %>
         <%= render 'shared/idea_created' %>
+
+        <!-- @news_items.each do |news_item|
+          = render partial: "news_item_#{new_item.class.underscorize}", object: news_item, as: :news_item -->
         <div>
           <% @idea.bookmarks.each do |b| %>
             <p>bookmark created <%= time_ago_in_words(b.created_at) %> ago</p>

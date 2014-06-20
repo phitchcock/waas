@@ -1,0 +1,18 @@
+<%= render 'shared/collaboratornav' %>
+<div class="container">
+  <h3>Collaborators</h3>
+  <hr>
+  <div class="row">
+    <%= render @idea.collaborators %>
+  </div>
+  <%#= will_paginate @collaborators, renderer: BootstrapPagination::Rails %>
+
+  <h3>Add Collaborator</h3>
+  <hr>
+  <div class="row">
+    <% @idea.not_users.each do |user| %>
+      <%= render Collaborator.new(user: user, idea: @idea) %>
+    <% end %>
+  </div>
+  <%#= will_paginate @users, renderer: BootstrapPagination::Rails %>
+</div>

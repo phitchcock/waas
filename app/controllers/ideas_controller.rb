@@ -5,7 +5,7 @@ class IdeasController < ApplicationController
 
   def index
     @ideas = Idea.paginate(page: params[:page], per_page: 10)
-    authorize @ideas
+    #authorize @ideas
   end
 
   def show

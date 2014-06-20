@@ -1,0 +1,19 @@
+<div class="col-md-3">
+  <div class="thumbnail text-center">
+    <div class="testimonial-image">
+      <%= image_tag(collaborator.user.avatar.thumb.url) %>
+    </div>
+    <div class="caption">
+      <h4><%= collaborator.user.email %></h4>
+      <p>online | <%= collaborator.user.ideas.count %> ideas</p>          
+    </div>
+    <div>
+      <% if collaborator.persisted? %>
+        <%= link_to 'remove collaborator', idea_collaborators_path(collaborator.idea, user_id: collaborator.user.id), method: :delete, class: 'btn btn-secondary' %>
+      <% end %>
+      <% Collaborator.roles.each do |role, value| %>
+        <%= link_to "make #{role}", idea_collaborators_path(collaborator.idea, user_id: collaborator.user.id, role: role), method: :put, class: "btn btn-secondary #{'disabled' if collaborator.role == role}" %>
+      <% end %>
+    </div>
+  </div>
+</div>

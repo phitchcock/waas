@@ -50,7 +50,9 @@
             <span>Ideas</span>
             <!-- <i class="fa fa-folder-open"></i> -->
             <span class="navbar-visible-collapsed">&nbsp;Notifications&nbsp;</span>
-            <span class="badge badge-primary"><%= current_user.ideas.count %></span>
+            <% if current_user.ideas.count > 0 %>
+              <span class="badge badge-primary"><%= current_user.ideas.count %></span>
+            <% end %>
           </a>
           <ul class="dropdown-menu noticebar-menu noticebar-hoverable" role="menu">
             <li class="nav-header">
@@ -58,11 +60,12 @@
                 Ideas
               </div>
               <div class="pull-right">
-                <a href="javascript:;">Mark as Read</a>
+                <a href="javascript:;">Clear</a>
               </div>
             </li>
             <% current_user.ideas.each do |idea| %>
             <li>
+              <%= link_to ideas_path(idea) do %>
               <a href="/users" class="noticebar-item">
                 <span class="noticebar-item-image">
                   <i class="fa fa-lightbulb-o text-success"></i>
@@ -73,14 +76,15 @@
                   <span class="noticebar-item-time"><%= idea.comments.count %> Comments</span>
                   <span class="noticebar-item-time"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(idea.created_at) %> ago</span>
                 </span>
+              <% end %>
               </a>
             </li>
             <% end %>
             <li>
-              <%= link_to 'VIEW ALL ideaS', user_path(current_user), class: 'btn btn-primary' %>
+              <%= link_to 'VIEW ALL IDEAS', user_path(current_user), class: 'btn btn-primary btn-small' %>
             </li>
             <li>
-              <%= link_to 'New idea', new_idea_path, class: 'btn btn-secondary' %>
+              <%= link_to 'NEW IDEA', new_idea_path, class: 'btn btn-secondary btn-small' %>
             </li>
           </ul>
         </li>
@@ -142,7 +146,7 @@
               <li class="divider"></li>
               <li>
                 <%= link_to user_path(current_user) do %>
-                  <i class="fa fa-user"></i> My ideas
+                  <i class="fa fa-user"></i> My Ideas
                 <% end %>
               </li>
               <li>

@@ -1,6 +1,6 @@
 class CollaboratorPolicy < ApplicationPolicy
 
-  def index?
+  def show?
     user.present? || user.role?(:premium)
   end
 

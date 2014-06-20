@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :bookmarks
     resources :comments
     get '/up-vote' => 'comments#up_vote', as: :up_vote
-    resources :collaborators, only: [:index, :create, :destroy]
+    resource :collaborators, only: [:show, :update, :destroy]
   end
   
 end
