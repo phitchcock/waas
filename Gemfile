@@ -29,6 +29,7 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'tinymce-rails'
 gem 'acts_as_votable'
+gem 'omniauth-facebook'
 
 group :development do 
   gem 'spring'

@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140619204602) do
+ActiveRecord::Schema.define(version: 20140620025636) do
 
-  create_table "screens", force: true do |t|
+  create_table "articles", force: true do |t|
     t.string   "title"
-    t.text     "body"
-    t.integer  "idea_id"
+    t.text     "information"
+    t.integer  "wiki_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug"
   end
 
-  add_index "screens", ["slug"], name: "index_screens_on_slug"
+  add_index "articles", ["slug"], name: "index_articles_on_slug"
 
   create_table "bookmarks", force: true do |t|
     t.string   "title"
@@ -61,6 +61,28 @@ ActiveRecord::Schema.define(version: 20140619204602) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "ideas", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "public",     default: true
+    t.string   "slug"
+  end
+
+  add_index "ideas", ["slug"], name: "index_ideas_on_slug"
+
+  create_table "screens", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.integer  "idea_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "slug"
+  end
+
+  add_index "screens", ["slug"], name: "index_screens_on_slug"
+
   create_table "users", force: true do |t|
     t.string   "username"
     t.datetime "created_at"
@@ -77,21 +99,37 @@ ActiveRecord::Schema.define(version: 20140619204602) do
     t.string   "last_sign_in_ip"
     t.integer  "role"
     t.string   "avatar"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-
-  create_table "ideas", force: true do |t|
-    t.string   "title"
-    t.text     "body"
+  create_table "votes", force: true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.integer  "vote_weight"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "public",      default: true
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+
+  create_table "wikis", force: true do |t|
+    t.string   "title"
+    t.text     "information"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "pubilc",      default: true
     t.string   "slug"
   end
 
-  add_index "ideas", ["slug"], name: "index_ideas_on_slug"
+  add_index "wikis", ["slug"], name: "index_wikis_on_slug"
 
 end
