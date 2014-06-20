@@ -2,6 +2,15 @@
   <div class="account-body">
     <h3>Get Started with a Free Account.</h3>
     <h5>Sign up in 30 seconds. No credit card required.</h5>
+    <div>
+      <div class="">
+        <%= link_to user_omniauth_authorize_path(:facebook), class: 'btn btn-facebook btn-block btn-lg' do %>
+          <i class="fa fa-facebook"></i>&nbsp;&nbsp;Sign In with Facebook
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <p>Or do it the old way!</p>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%#= devise_error_messages! %>
@@ -36,6 +45,5 @@
 
 
   </div>
-  <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
   <%= render "devise/shared/links" %>
 </div>
