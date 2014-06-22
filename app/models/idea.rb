@@ -1,8 +1,8 @@
 class Idea < ActiveRecord::Base
   extend FriendlyId
 
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  include PublicActivity::Common
+  #tracked owner: Proc.new{ |controller, model| controller.current_user }
 
   friendly_id :title, use: :history
 

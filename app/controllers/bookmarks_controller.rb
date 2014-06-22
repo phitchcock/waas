@@ -8,6 +8,7 @@ class BookmarksController < ApplicationController
     #@new_bookmark = bookmark.new
 
     if @bookmark.save
+      @bookmark.create_activity :create, owner: current_user
       flash[:notice] = 'bookmark created'
       redirect_to idea_path(@idea)
     else

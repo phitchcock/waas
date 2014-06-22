@@ -18,6 +18,7 @@ class CollaboratorsController < ApplicationController
     authorize @collaborator
     
     if @collaborator.save
+      @collaborator.create_activity :create, owner: current_user
       redirect_to idea_collaborators_path(@idea) #, notice: "Collaborator added!"
     else
       flash[:error] = "Collaborator did not save"

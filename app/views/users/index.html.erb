@@ -6,11 +6,11 @@
       <div class="col-md-3 text-center">
         <div class="thumbnail" style="text-align: center">
           <div class="testimonial-image">
-            <%#= image_tag(collab.avatar.thumb.url) %>
+            <%= image_tag(collab.user.avatar.thumb.url) %>
           </div>
           <div class="caption">
-            <h4><%= link_to collab.idea.title, [collab.idea] %></h4>
-            <p>online | <%= collab.idea.comments.count %> comments</p>
+            <h4><%= collab.user.ideas.count %></h4> <!-- [collab.idea] -->
+            <p>online | <%= collab.user.email %> comments</p>
           </div>
           <div>
             <%#= link_to 'invite collaborator', users_path, class: 'btn btn-secondary' %>

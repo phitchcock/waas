@@ -10,6 +10,7 @@ class IdeasController < ApplicationController
 
   def show
     @ideas = Idea.all
+    @activities = PublicActivity::Activity.order("created_at desc")
     #@screen = screen.new
     @collaborators = Collaborator.all
     @comment = Comment.new #(parent_id: params[:parent_id])
@@ -29,6 +30,7 @@ class IdeasController < ApplicationController
 
     authorize @idea
     if @idea.save
+      @idea.create_activity :create, owner: current_user
       redirect_to @idea, notice: "#{@idea.title} has been created!"
     else
       flash[:error] = "Idea was not created, please try again"

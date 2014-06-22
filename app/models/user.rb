@@ -1,9 +1,6 @@
 class User < ActiveRecord::Base
   mount_uploader :avatar, AvatarUploader
 
-  include PublicActivity::Model
-  tracked owner: Proc.new{ |controller, model| controller.current_user }
-
   acts_as_voter
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

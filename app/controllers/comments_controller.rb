@@ -42,6 +42,9 @@ class CommentsController < ApplicationController
     #@new_comment = Comment.new
 
     if @comment.save
+      @comment.create_activity :create, owner: current_user
+      @comment.create_activity :create, owner: @idea
+
       flash[:notice] = 'comment created'
       redirect_to idea_path(@idea)
     else

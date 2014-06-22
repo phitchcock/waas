@@ -19,6 +19,7 @@ class ScreensController < ApplicationController
     @screen = @idea.screens.build(screen_params)
 
     if @screen.save
+      @screen.create_activity :create, owner: @idea
       redirect_to idea_path(@idea), notice: 'Created screen'
     else
       flash[:error] = 'screen was not created'
