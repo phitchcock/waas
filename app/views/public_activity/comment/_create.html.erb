@@ -1,1 +1,23 @@
-<p>comment: <%= time_ago_in_words(activity.created_at) %> | body: <%= activity.trackable.body %> | user: <%= activity.trackable.user.name %> | idea title: <%= activity.trackable.idea.title %> | public: <%= activity.trackable.idea.public %></p>
+<div class="feed-item feed-item-image">
+  <div class="feed-icon">
+    <i class="fa fa-comments"></i>
+  </div> <!-- /.feed-icon -->
+  <div class="feed-subject">
+    <p>
+      <%= activity.owner.email %> added a comment on the idea: <%= activity.trackable.idea.title %>
+    </p>
+  </div> <!-- /.feed-subject -->
+  <div class="feed-content">
+    <ul class="icons-list">
+      <li>
+        <i class="icon-li fa fa-quote-left"></i>
+        <%= truncate(activity.trackable.body, length: 100) %>
+      </li>
+    </ul>
+  </div> <!-- /.feed-content -->
+  <div class="feed-actions">
+    <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+    <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
+    <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(activity.created_at) %> ago</a>
+  </div> <!-- /.feed-actions -->
+</div> <!-- /.feed-item -->

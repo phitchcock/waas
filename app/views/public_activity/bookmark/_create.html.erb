@@ -1,6 +1,16 @@
-<p>bookmark: <%= activity.owner.created_at %> | title: <%= activity.trackable.user.email %> |
-   | bookmark title: <%= activity.trackable.title %>
+<div class="feed-item feed-item-bookmark">
+  <div class="feed-icon">
+    <i class="fa fa-bookmark"></i>
+  </div> <!-- /.feed-icon -->
+  <div class="feed-subject">
+    <p><a href="javascript:;"><%= activity.owner.email %></a> bookmarked a page on <%= activity.trackable.title %>: <a href="javascript:;"><%= activity.trackable.title %></a></p>
+  </div> <!-- /.feed-subject -->
+  <div class="feed-content">
+  </div> <!-- /.feed-content -->
+  <div class="feed-actions">
+    <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+    <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
+    <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(activity.created_at) %> ago</a>
+  </div> <!-- /.feed-actions -->
 
-
-
-         </p>
+</div> <!-- /.feed-item -->

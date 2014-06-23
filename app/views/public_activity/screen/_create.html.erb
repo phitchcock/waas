@@ -1,1 +1,16 @@
-<p>screen: <%= time_ago_in_words(activity.created_at) %> | title: <%#= activity.trackable.title %> | <%#= activity.owner.email %>
+<div class="feed-item feed-item-question">
+  <div class="feed-icon">
+    <i class="fa fa-desktop"></i>
+  </div> <!-- /.feed-icon -->
+  <div class="feed-subject">
+    <p><a href="javascript:;"><%= activity.owner.email %></a> added a screen <%= activity.trackable.title %> to the idea: <%= activity.trackable.idea.title %></p>
+  </div> <!-- /.feed-subject -->
+  <div class="feed-content">
+    
+  </div> <!-- /.feed-content -->
+  <div class="feed-actions">
+    <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+    <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
+    <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(activity.created_at) %> ago</a>
+  </div> <!-- /.feed-actions -->
+</div> <!-- /.feed-item -->

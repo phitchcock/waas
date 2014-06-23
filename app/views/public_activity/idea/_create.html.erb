@@ -1,2 +1,24 @@
-<p>idea: <%= activity.owner.created_at %> | title: <%= activity.trackable.title %> | created by: <%= activity.owner.name %> | collaborators: <%= activity.trackable.collaborators.count %>
-            </p>
+<div class="feed-item">
+  <div class="feed-icon thumbnail">
+    <%= image_tag(activity.owner.avatar.profile.url) %>
+
+  </div> <!-- /.feed-icon -->
+  <div class="feed-subject">
+    <p>
+      <%= activity.owner.email %> shared an idea: <%= activity.trackable.title %>
+    </p>
+  </div> <!-- /.feed-subject -->
+  <div class="feed-content">
+    <ul class="icons-list">
+      <li>
+        <i class="icon-li fa fa-lightbulb-o"></i>
+        <%= truncate(activity.trackable.body, length: 100) %>
+      </li>
+    </ul>
+  </div> <!-- /.feed-content -->
+  <div class="feed-actions">
+    <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+    <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
+    <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(activity.created_at) %> ago</a>
+  </div> <!-- /.feed-actions -->
+</div> <!-- /.feed-item -->

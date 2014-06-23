@@ -1,6 +1,20 @@
-<p>colab: <%= activity.owner.created_at %> | title: <%#= activity.trackable.user.email %> |
-        role: <%#= activity.trackable.role %> | idea title: <%#= activity.trackable.idea.title %>
-
-
-
-         </p>
+<div class="feed-item feed-item-file">
+  <div class="feed-icon">
+    <i class="fa fa-users"></i>
+  </div> <!-- /.feed-icon -->
+  <div class="feed-subject">
+    <p><a href="javascript:;"><%= activity.owner.email %></a> added <%= activity.trackable.user.email %> as colaborator to the idea: <%= activity.trackable.idea.title %></p>
+  </div> <!-- /.feed-subject -->
+  <div class="feed-content">
+    <div class="">
+      <div class="testimonial-image">
+        <%= image_tag activity.trackable.user.avatar.thumb %>
+      </div>
+    </div> <!-- /.thumbnail -->
+  </div> <!-- /.feed-content -->
+  <div class="feed-actions">
+    <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+    <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
+    <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(activity.created_at) %> ago</a>
+  </div> <!-- /.feed-actions -->
+</div> <!-- /.feed-item -->
