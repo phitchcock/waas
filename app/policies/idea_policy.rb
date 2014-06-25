@@ -6,6 +6,16 @@ class IdeaPolicy < ApplicationPolicy
   #   end
   # end
 
+  class Scope < Struct.new(:user, :scope)
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.public_wikis + user.wikis
+      end
+    end
+  end
+
   def index?
     true
   end

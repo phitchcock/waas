@@ -47,3 +47,8 @@ end
 group :doc do 
   gem 'sdoc', '~> 0.4.0'
 end
+
+group :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+end
