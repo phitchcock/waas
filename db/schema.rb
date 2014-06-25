@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620210820) do
+ActiveRecord::Schema.define(version: 20140625170423) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -149,16 +149,5 @@ ActiveRecord::Schema.define(version: 20140620210820) do
 
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
-
-  create_table "wikis", force: true do |t|
-    t.string   "title"
-    t.text     "information"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "pubilc",      default: true
-    t.string   "slug"
-  end
-
-  add_index "wikis", ["slug"], name: "index_wikis_on_slug"
 
 end
