@@ -13,7 +13,8 @@ class IdeasController < ApplicationController
     @activities = PublicActivity::Activity.order("created_at desc")
     #@screen = screen.new
     @collaborators = Collaborator.all
-    @comment = Comment.new #(parent_id: params[:parent_id])
+    @comment = Comment.new(parent_id: params[:parent_id]) #(parent_id: params[:parent_id])
+    @comments = Comment.hash_tree
     @bookmark = Bookmark.new
     authorize @idea
   end

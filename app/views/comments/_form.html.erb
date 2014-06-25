@@ -1,4 +1,5 @@
 <%= form_for ([@idea, @comment]), remote: true do |f| %>
+
   <div class="form-group">
     <%= f.label :body %>
     <%= f.text_area :body, class: 'form-control' %>

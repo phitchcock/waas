@@ -12,7 +12,7 @@ class ActivitiesController < ApplicationController
 
   def yours
     # User activity
-    @activities = PublicActivity::Activity.order("created_at DESC").where(owner_type: "User", owner_id: current_user).all
+    @activities = PublicActivity::Activity.order("created_at DESC").where(owner_type: "User", owner_id: current_user).paginate(page: params[:page], per_page: 10)
   end
 
   def ideafeed

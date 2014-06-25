@@ -1,28 +1,31 @@
 <h4 class="content-title"><u>Comments</u></h4>
-        <% @idea.comments.each do |comment| %>
-        <div class="feed-item feed-item-idea">
-          <div class="feed-icon thumbnail">
-            <%= image_tag(comment.user.avatar.profile.url) %>
-            <i class="fa fa-lightbulb-o"></i>
-          </div> <!-- /.feed-icon -->
-          <div class="feed-subject">
-            <p><a href="javascript:;"><%= comment.user.email %></a> shared a comment: <a href="javascript:;">TODO</a></p>
-          </div> <!-- /.feed-subject -->
-          <div class="feed-content">
-            <ul class="icons-list">
-              <li>
-                <i class="icon-li fa fa-quote-left"></i>
-                <%= comment.body %>
-              </li>
-            </ul>
-            <p><%= link_to 'reply', new_idea_comment_path(comment.id) %></p>
-          </div> <!-- /.feed-content -->
-          <div class="feed-actions">
-            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
-            <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
-            <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
-          </div> <!-- /.feed-actions -->
-          <%#= render 'shared/question' %>
-          <%#= render 'shared/answer' %>
-        </div> <!-- /.feed-item -->
-        <% end %>
+  <% @idea.comments.each do |comment| %>
+  <div class="feed-item feed-item-idea">
+    <div class="feed-icon thumbnail">
+      <%#= image_tag(comment.user.avatar.profile.url) %>
+      <i class="fa fa-lightbulb-o"></i>
+    </div> <!-- /.feed-icon -->
+    <div class="feed-subject">
+      <p><a href="javascript:;"><%= comment.user.email %></a> shared a comment: <a href="javascript:;">TODO</a></p>
+    </div> <!-- /.feed-subject -->
+    <div class="feed-content">
+      <ul class="icons-list">
+        <li>
+          <i class="icon-li fa fa-quote-left"></i>
+          <%= comment.body %>
+        </li>
+      </ul>
+      <% from_reply_form ||= nil %>
+      <% unless from_reply_form %>
+        <p><%= link_to 'reply', idea_new_comment_path(@idea, comment.id) %></p>
+      <% end %>
+    </div> <!-- /.feed-content -->
+    <div class="feed-actions">
+      <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
+      <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-down"></i> 29</a>
+      <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> <%= time_ago_in_words(comment.created_at) %> ago</a>
+    </div> <!-- /.feed-actions -->
+    <%#= render 'shared/question' %>
+    <%#= render 'shared/answer' %>
+  </div> <!-- /.feed-item -->
+  <% end %>

@@ -1,6 +1,8 @@
 class CommentsController < ApplicationController
 
-
+  def index
+    @comments = Comment.hash_tree
+  end
   
   # def create
   #   @idea = Idea.friendly.find(params[:idea_id])
@@ -26,20 +28,22 @@ class CommentsController < ApplicationController
 
   def create
     @idea = Idea.friendly.find(params[:idea_id])
-    #@idea.comments = Comment.hash_tree
-    @comments = @idea.comments
+    #@comment = current_user.comments.new(params.require(:comment).permit!)
+    #@comment.idea = @idea
+    #@comment.user = current_user
+    #@new_comment = Comment.new
 
 
     if params[:comment][:parent_id].to_i > 0
       parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-      @comment = current_user.parent.children.build(params.require(:comment).permit!)
+      @comment = parent.children.build(params.require(:comment).permit!)
       @comment.idea = @idea
+      @comment.user = current_user
     else
       @comment = current_user.comments.build(params.require(:comment).permit!)
       @comment.idea = @idea
     end
 
-    #@new_comment = Comment.new
 
     if @comment.save
       @comment.create_activity :create, owner: current_user

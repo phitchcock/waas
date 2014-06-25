@@ -18,6 +18,8 @@
  *= require font-awesome
  *= require_self
  */
+
+ .replies {margin-left: 50px;}
 /* rename application.css to css.scss
 @import 'base/epiceditor';  
 @import 'preview/bartik';  

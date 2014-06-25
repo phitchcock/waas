@@ -4,3 +4,5 @@
 
   <%= render_activities(@activities) %>
 </div>
+
+<%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
