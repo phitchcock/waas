@@ -1,0 +1,6 @@
+<% comments_tree.each do |comment, replies| %>  
+  <%= render comment %>
+  <div class='replies'>
+    <%= render partial: 'comments/comments_tree', locals: {comments_tree: replies} %>
+  </div>
+<% end %>

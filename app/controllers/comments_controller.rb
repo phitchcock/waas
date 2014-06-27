@@ -33,28 +33,18 @@ class CommentsController < ApplicationController
     #@comment.user = current_user
     #@new_comment = Comment.new
 
-
-    if params[:comment][:parent_id].to_i > 0
-      parent = Comment.find_by_id(params[:comment].delete(:parent_id))
-      @comment = parent.children.build(params.require(:comment).permit!)
-      @comment.idea = @idea
-      @comment.user = current_user
-    else
-      @comment = current_user.comments.build(params.require(:comment).permit!)
-      @comment.idea = @idea
-    end
-
+    @comment = @idea.comments.new(params.require(:comment).permit!)
 
     if @comment.save
       #@comment.create_activity :create, owner: current_user
       @comment.create_activity :create, owner: @idea
 
       flash[:notice] = 'comment created'
-      redirect_to idea_path(@idea)
     else
       flash[:error] = 'try again'
-      redirect_to idea_path(@idea)
     end
+
+    redirect_to idea_path(@idea)
   end
 
 

@@ -14,7 +14,7 @@ class IdeasController < ApplicationController
     #@screen = screen.new
     @collaborators = Collaborator.all
     @comment = Comment.new(parent_id: params[:parent_id]) #(parent_id: params[:parent_id])
-    @comments = Comment.hash_tree
+    @comments = @idea.comments.hash_tree
     @bookmark = Bookmark.new
     authorize @idea
   end
@@ -26,11 +26,9 @@ class IdeasController < ApplicationController
 
   def create
     @idea = Idea.new(idea_params)
-    @idea.users << current_user
-    # Collaborator.create(idea: @idea, current_user, role: 'admin')
-
     authorize @idea
     if @idea.save
+      @idea.collaborators.create(user: current_user, role: 'owner')
       @idea.create_activity :create, owner: current_user
       redirect_to @idea, notice: "#{@idea.title} has been created!"
     else

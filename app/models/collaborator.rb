@@ -7,10 +7,10 @@ class Collaborator < ActiveRecord::Base
 
   enum role: %w(owner editor guest)
 
-  after_initialize :set_default_role, :if => :new_record?
+  after_validation :set_default_role
 
   def set_default_role
-    self.role ||= :owner
+    self.role ||= :guest
   end
 
   validates_uniqueness_of :user_id, scope: :idea_id

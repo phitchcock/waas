@@ -14,7 +14,7 @@
         <h3 class="content-title"><u>Add Comment</u></h3>
           <%= render 'shared/comment' %>
           <%#= render 'shared/comments' %>
-          <%= comments_tree_for @comments %>
+          <%= render partial: 'comments/comments_tree', locals: {comments_tree: @comments} %>
 
       </div> <!-- /.tab-pane -->
 
@@ -39,7 +39,8 @@
             </div>
             <div>
               <%#= link_to 'make collaborator', idea_collaborators_path(@idea, user_id: collaborator.user.id), method: :post, class: 'btn btn-secondary', disabled: 'disabled' %>
-              <%= link_to 'remove collaborator', idea_collaborators_path(@idea, collaborator), method: :delete, class: 'btn btn-secondary' %>
+             
+              <%= link_to 'remove collaborator', idea_collaborators_path(collaborator.idea, user_id: collaborator.user.id), method: :delete, class: 'btn btn-secondary' %>
             </div>
           </div>
         </div>

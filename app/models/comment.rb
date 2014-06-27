@@ -10,6 +10,7 @@ class Comment < ActiveRecord::Base
   #has_many :votes, dependent: :destroy
 
   validates :body, presence: true
+  validates :idea, presence: true
 
   acts_as_votable
   # def up_votes
